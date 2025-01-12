@@ -1,0 +1,30 @@
+-- http works on the application layer of the OSI model.
+-- TCP follow 3 way handhake:- 
+-- chating is used TCp only.
+-- http 1.1 draw back :- you always do 3 way handshake on call jitne baar call kre utne baar ye karte hai.
+-- tsc is order guranted. means send and recieve sequence data.(packets in correct order.)
+-- user:- Hello(sync)
+-- server:- hii(sync) + Ack
+-- use:- fine
+
+
+rtmp delays(relays) search o web.
+
+
+
+-- DNS internal working:
+-- user  -  DNS server      -- root server(there are only 13 rs)
+                                .con,.in,.io,etc.
+                                root servers map
+
+
+-- ans full form
+-- and:- godaddy
+-- DNS works on udp protocol and port number is #53
+
+
+
+#Artical writing on hashnode
+
+diff between compress and encryption
+symetric and asymetric encryption

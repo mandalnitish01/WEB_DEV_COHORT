@@ -1,0 +1,62 @@
+# Computer and Network Internal Work
+
+## Computer Internal Work
+
+### Central Processing Unit (CPU)
+- The CPU is the brain of the computer where most calculations take place.
+- It performs arithmetic and logical operations.
+- It fetches, decodes, and executes instructions from memory.
+
+### Memory
+- RAM (Random Access Memory) is the primary memory used for temporary storage while the computer is running.
+- ROM (Read-Only Memory) is used for permanent storage of firmware.
+
+### Storage
+- Hard Disk Drives (HDD) and Solid State Drives (SSD) are used for long-term data storage.
+- Data is stored in binary format and can be retrieved as needed.
+
+### Input/Output Devices
+- Input devices include keyboards, mice, and scanners.
+- Output devices include monitors, printers, and speakers.
+
+## Network Internal Work
+
+### Network Interface Card (NIC)
+- The NIC is a hardware component that connects a computer to a network.
+- It converts data into a format suitable for the network medium.
+
+### Routers and Switches
+- Routers direct data packets between different networks.
+- Switches connect devices within the same network and use MAC addresses to forward data to the correct destination.
+
+### Protocols
+- TCP/IP (Transmission Control Protocol/Internet Protocol) is the fundamental suite of protocols(rules) for the internet.
+- HTTP/HTTPS are protocols used for transferring web pages.
+- TLS is a protocol used for transferring web pages from a network to a network.
+- FTP (File Transfer Protocol) is used for transferring files between computers.
+- UDP (UDP Transfer Protocol and Internet Protocol) is used for transferring files between different computer systems and Internet systems.
+
+
+
+### Firewalls
+- Firewalls monitor and control incoming and outgoing network traffic based on predetermined security rules.
+- They act as a barrier between a trusted internal network and untrusted external networks.
+
+### DNS (Domain Name System)
+- DNS translates human-readable domain names (like www.example.com) into IP addresses.
+- It is essential for the functioning of the internet as it allows users to access websites using easy-to-remember names.
+
+### VPN (Virtual Private Network)
+- VPNs create a secure connection over a public network.
+- They encrypt data to ensure privacy and security.
+
+This document provides a high-level overview of the internal workings of computers and networks. Each component and concept plays a crucial role in the overall functionality and security of computing systems.
+
+
+
+
+##load balancer:- A load balancer is a device or service that distributes user traffic across multiple servers or applications
+
+##A content delivery network (CDN) is a system of servers that deliver web content to users based on their location
+
+Question :- NS2 & NS3 search on web.
