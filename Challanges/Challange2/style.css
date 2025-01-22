@@ -12,51 +12,127 @@
   }
   
   body { 
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    transition: background-color 0.3s, color 0.3s;
+
   }
-  
+  .dark-mode-toggle{
+    position:absolute;
+    top: 1rem;
+    right: 10rem;
+    cursor: pointer;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 10px;
+    color: var(--text-dark);
+    background-color: var(--primary-blue);
+  }
   .hero {
+    margin-top: 10%;
+    margin-left: 10%;
   }
   
   .hero-grid {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    /* align-items: center; */
+
   }
   
   .content-col h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+
   }
   
   .content-col p {
+    font-size: 1rem;
+    color: var(--neutral-400);
+    margin-bottom: 2rem;
   }
   
   .cta-group {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
   }
   
   .sr-only {
   }
   
-  .input-wrapper {
+  .input-wrapper input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--neutral-400);
+    margin-bottom: 1rem;
+    color: var(--neutral-900);
+    background-color: var(--neutral-400);
   }
   
   input[type='text'] {
+    color: white;
   }
   
   .demo-button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: var(--primary-blue);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    margin-left: 20px;
+    /* text-decoration: none; */
+    border: none;
   }
   
   .demo-button:hover {
+    background-color: var(--primary-blue-dark);
+
   }
   
   .brands-section {
+    margin-top: 2rem;
+    /* display: flex;
+    gap: 5px; */
+
   }
   
   .trusted-by {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8rem;
+
+
   }
   
   .brand-logos {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    /* background-color: var(--neutral-300); */
+    border-radius: 5px;
+margin-left: -25%;
   }
   
-  .brand-logo {
+  .brand-logos svg{
+    width: 150px;
+    height: 150px;
   }
+
   
-  .image-col {
+  .image-col img{
+    width: 70%;
+    height: 100%;
+    border-radius: 5px;
   }
   
   .hero-image {
@@ -70,6 +146,7 @@
     }
   
     .cta-group {
+      
     }
   
     .demo-button {
