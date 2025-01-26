@@ -158,14 +158,13 @@
     transition: 0.5s;
     text-decoration: none;
     border-radius: 20px;
-
   }
+  
   
   .subscribe-btn:hover {
     /* Add your styles here */
-    background-color: #ff7b00;
-    transform: scale(1.1);
+    background-color: #ec7403;
     transition: 0.5s;
 
   }
-  
+ 
