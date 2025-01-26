@@ -1,217 +1,230 @@
 /* Challenge CSS */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #353333;
-  }
-  
-  .container {
-    /* Add your styles here */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .header {
-    /* Add your styles here */
-   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
-  img{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-  }
-  
-  h1 {
-    /* Add your styles here */
-    font-size: 50px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: rgb(224, 73, 111);
-  }
-  
-  .subtitle {
-    /* Add your styles here */
-    font-size: 25px;
-    color:aliceblue;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    opacity: 0.7;
-  }
-  
-  .pricing-container {
-    /* Add your styles here */
-    display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    margin-top: 50px;
-  }
-  
-  .pricing-card {
-    /* Add your styles here */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: 0.5s;
-    width: 450px;
-    background-color: #ffffff;
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #353333;
+}
 
-  }
+.container {
+  /* Add your styles here */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
 
-  
-  .pricing-card:hover {
-    /* Add your styles here */
-    transform: scale(1.1);
-    transition: 0.5s;
-    
-  }
-  
-  .card-header {
-    /* Add your styles here */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+.header {
+  /* Add your styles here */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
 
-  }
-  h2{
-    font-size: 50px;
-  }
-  
-  .icon {
-    /* Add your styles here */
-    font-size: 50px;
-  }
-  
-  .popular-tag {
-    /* Add your styles here */
+h1 {
+  /* Add your styles here */
+  font-size: 50px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgb(224, 73, 111);
+}
 
-  }
-  .beginner{
-    background-color: #413939;
-    color: #ffffff;
-  }
-  .price-block {
-    /* Add your styles here */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    background-color: #a3a0a0;
-    color: rgb(39, 37, 37);
-    padding: 10px;
-    border-radius: 5px;
-    width: 80%;
-  }
-  
-  .price {
-    /* Add your styles here */
-    font-size: 40px;
-    color: rgb(197, 58, 92);
-    font-weight:bolder;
-    opacity: 6;
-  }
-  
-  .period {
-    /* Add your styles here */
-    font-size: 20px;
-    opacity: 0.7;
-    /* text-decoration: underline; */
-  }
-  
-  .features {
-    /* Add your styles here */
-    display: flex;
-    flex-direction: column;
-    /* flex:start;
+.subtitle {
+  /* Add your styles here */
+  font-size: 25px;
+  color: aliceblue;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  opacity: 0.7;
+}
+
+.pricing-container {
+  /* Add your styles here */
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.pricing-card {
+  /* Add your styles here */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+  width: 450px;
+  background-color: #ffffff;
+}
+
+.pricing-card:hover {
+  /* Add your styles here */
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.card-header {
+  /* Add your styles here */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+h2 {
+  font-size: 50px;
+}
+
+.icon {
+  /* Add your styles here */
+  font-size: 50px;
+}
+
+.popular-tag {
+  /* Add your styles here */
+  margin-top: -40px;
+  background-color: #f1bf34;
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+  height: 40px;
+  border-radius: 20px;
+}
+.beginner {
+  background-color: #413939;
+  color: #ffffff;
+}
+.price-block {
+  /* Add your styles here */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #a3a0a0;
+  color: rgb(39, 37, 37);
+  padding: 10px;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.price {
+  /* Add your styles here */
+  font-size: 40px;
+  color: rgb(197, 58, 92);
+  font-weight: bolder;
+  opacity: 6;
+}
+
+.period {
+  /* Add your styles here */
+  font-size: 20px;
+  opacity: 0.7;
+  /* text-decoration: underline; */
+}
+
+.features {
+  /* Add your styles here */
+  display: flex;
+  flex-direction: column;
+  /* flex:start;
     justify-content: center;
     align-items: center; */
-    gap: 30px;
-    padding: 10px;
-    text-decoration: none;
-  }
-  
-  .features li {
-list-style: none;
-   
-  }
- 
-  
-  .features li.disabled {
-    /* Add your styles here */
-    opacity: 0.5;
-  }
-  
-  .join-btn {
-    /* Add your styles here */
-    /* background-color: #ff7b00; */
-    color: rgb(235, 95, 130);
-    padding: 10px 20px;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.5s;
-    text-decoration: none;
-    border-radius: 10px;
-    border: rgb(197, 58, 92) solid 2px;
-    width: 100%;
-    background-color: #413939;
+  gap: 30px;
+  padding: 10px;
+  text-decoration: none;
+}
 
-  }
-  
-  .join-btn:hover {
-    /* Add your styles here */
-    background-color: #413939;
-    color: rgb(216, 23, 71);
-    padding: 10px 20px;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.5s;
-    text-decoration: none;
-    border-radius: 10px;
-    border: rgb(197, 58, 92) solid 2px;
+.features li {
+  list-style: none;
+  font-size: 20px;
+}
 
-  }
-  
-  /* Custom Class Modifiers */
-  .warrior {
-    /* Add your styles here */
-  }
-  
-  .champion {
-    /* Add your styles here */
-  }
-  
-  .champion .price {
-    /* Add your styles here */
-  }
-  
-  .champion .join-btn {
-    /* Add your styles here */
-  }
-  
-  .champion .join-btn:hover {
-    /* Add your styles here */
-  }
-  
+.features li.disabled {
+  /* Add your styles here */
+  opacity: 0.5;
+}
+
+.join-btn {
+  /* Add your styles here */
+  /* background-color: #ff7b00; */
+  color: rgb(235, 95, 130);
+  padding: 10px 20px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+  text-decoration: none;
+  border-radius: 10px;
+  border: rgb(197, 58, 92) solid 2px;
+  width: 100%;
+  background-color: #413939;
+  font-weight: bolder
+}
+
+.join-btn:hover {
+  /* Add your styles here */
+  background-color: #413939;
+  color: rgb(216, 23, 71);
+  padding: 10px 20px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+  text-decoration: none;
+  border-radius: 10px;
+  border: rgb(197, 58, 92) solid 2px;
+}
+
+/* Custom Class Modifiers */
+.warrior {
+  /* Add your styles here */
+  background-color: rgb(78, 42, 56);
+  border: 2px solid rgb(216, 23, 71);
+}
+
+.champion {
+  /* Add your styles here */
+  background-color: #757246;
+  border: 1px solid rgb(255, 255, 60);
+}
+
+.champion .price {
+  /* Add your styles here */
+  color: rgb(231, 217, 12);
+  font-weight: bolder;
+}
+
+.champion .join-btn {
+  /* Add your styles here */
+  color: rgb(231, 217, 12);
+  background-color: #757246;
+  border: 1px solid rgb(255, 255, 60);
+
+}
+
+.champion .join-btn:hover {
+  /* Add your styles here */
+  color: rgb(255, 238, 0);
+  /* background-color: #807c44; */
+  border: 1px solid rgb(255, 255, 60);
+}
