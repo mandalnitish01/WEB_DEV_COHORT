@@ -15,7 +15,7 @@ body {
 .navbar {
   /* Add styles for navbar */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 5rem;
   background-color: #333;
@@ -66,8 +66,9 @@ body {
   /* Position and center the image to scale nicely on all screens */
   /* background-position: center; */
   /* background-repeat: no-repeat; */
-  background-size: cover;
   /* position: relative; */
+
+  background-size: cover;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -75,6 +76,7 @@ body {
   align-items: center;
   text-align: center;
 }
+
 
 .hero-content {
   /* Add styles for hero content container */
