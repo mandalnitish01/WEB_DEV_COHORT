@@ -111,55 +111,63 @@ body {
 .shop-button:hover {
   /* Define hover styles for shop button here */
   background-color: rgb(60, 24, 20);
+  box-shadow: 0 4px 10px rgba(10, 10, 10, 50);
+
 }
 
 /* Tea Collection Section */
 .tea-collection {
-  padding: 2rem;
-  text-align: center;
-  background-color: #f9f9f9; /* Optional light background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 45px 0px;
 }
 
 .tea-collection h2 {
-  font-size: 2rem;
-  color: #5a3814;
-  margin-bottom: 1.5rem;
+  color: #8b4513;
+  font-size: 2em;
+}
+
+.tea-cards-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
 }
 
 .tea-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 3fr)); /* Responsive grid */
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(3, 250px);
+  gap: 160px;
+  padding: 40px;
 }
 
 .tea-card {
-  background: #fff;
-  border: 1px solid #ddd;
+  box-shadow: 0px 2px 3px rgb(215, 214, 214);
   border-radius: 10px;
-  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  gap: 6px;
 }
 
 .tea-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.tea-card img {
-  margin-bottom: 1rem;
+  scale: 1.1;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0px 10px 5px rgb(215, 214, 214);
+  transform: translateY(-15px);
 }
 
 .tea-card h3 {
-  font-size: 1.2rem;
-  color: #5a3814;
-  margin-bottom: 0.5rem;
+  color: #8b4513;
 }
 
 .tea-card p {
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.4;
+  margin-top: 20px;
+  color: #878686;
 }
