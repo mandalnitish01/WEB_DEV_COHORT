@@ -1,77 +1,165 @@
 /* Challenge CSS */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Georgia", serif;
-    line-height: 1.6;
-    color: #333;
-  }
-  
-  .header {
-    /* Define header styles here */
-  }
-  
-  .logo {
-    /* Define logo styles here */
-  }
-  
-  .logo img {
-    /* Define image styles within the logo here */
-  }
-  
-  .nav-menu a {
-    /* Define navigation link styles here */
-  }
-  
-  .nav-menu a:hover {
-    /* Define hover styles for navigation links here */
-  }
-  
-  .hero {
-    /* Define hero section styles here */
-  }
-  
-  .hero-text h1 {
-    /* Define styles for h1 in hero-text here */
-  }
-  
-  .hero-text p {
-    /* Define styles for paragraph in hero-text here */
-  }
-  
-  .shop-button {
-    /* Define shop button styles here */
-  }
-  
-  .shop-button:hover {
-    /* Define hover styles for shop button here */
-  }
-  
-  .tea-collection {
-    /* Define tea collection section styles here */
-  }
-  
-  .tea-collection h2 {
-    /* Define styles for h2 in tea collection here */
-  }
-  
-  .tea-cards {
-    /* Define tea cards container styles here */
-  }
-  
-  .tea-card {
-    /* Define styles for each tea card here */
-  }
-  
-  .tea-card h3 {
-    /* Define styles for tea card headings here */
-  }
-  
-  .tea-card p {
-    /* Define styles for tea card paragraph text here */
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Georgia", serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.header {
+  /* Define header styles here */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem;
+}
+
+.logo {
+  /* Define logo styles here */
+  color: rgb(71, 24, 24);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 30px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bolder;
+}
+
+.logo img {
+  /* Define image styles within the logo here */
+  border: 2px solid green;
+  border-radius: 30px;
+  padding: 2px;
+}
+
+.nav-menu a {
+  /* Define navigation link styles here */
+  text-decoration: none;
+  padding: 5px 30px;
+  color: #000000;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-menu a:hover {
+  /* Define hover styles for navigation links here */
+  color: #333;
+  border-bottom: 3px solid #333;
+}
+
+.hero {
+  background: url("assets/chaipatti.png") no-repeat center center/cover;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  color: #fff; /* Ensures text stays readable */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  z-index: 1; /* Keep the overlay below content */
+}
+
+ .hero-text {
+  position: relative;
+  z-index: 2; /* Ensure content stays above the overlay */
+} 
+
+
+.hero-text h1 {
+  /* Define styles for h1 in hero-text here */
+  font-size: 60px;
+  color: rgb(255, 255, 255);
+}
+
+.hero-text p {
+  /* Define styles for paragraph in hero-text here */
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.shop-button {
+  /* Define shop button styles here */
+    width:150px;
+    height: 60px;
+    background-color: rgb(71, 24, 24);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    font-size: 20px;
+}
+
+.shop-button:hover {
+  /* Define hover styles for shop button here */
+  background-color: rgb(60, 24, 20);
+}
+
+/* Tea Collection Section */
+.tea-collection {
+  padding: 2rem;
+  text-align: center;
+  background-color: #f9f9f9; /* Optional light background */
+}
+
+.tea-collection h2 {
+  font-size: 2rem;
+  color: #5a3814;
+  margin-bottom: 1.5rem;
+}
+
+.tea-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 3fr)); /* Responsive grid */
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.tea-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tea-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.tea-card img {
+  margin-bottom: 1rem;
+}
+
+.tea-card h3 {
+  font-size: 1.2rem;
+  color: #5a3814;
+  margin-bottom: 0.5rem;
+}
+
+.tea-card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
