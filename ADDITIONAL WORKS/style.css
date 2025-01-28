@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@600&family=Poppins:wght@300;400;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper{
+    background: url(assets/bg.jpg);
+    background-size: cover;
+    height: 100vh;
+    /* opacity: 0.9; */
+    position: relative;
+    z-index: 1; /* Ensure content stays above the overlay */
+}
+.wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Keep the overlay below content */
+    background: rgba(5, 6, 8, 0.5); /* Adjust the opacity as needed */
+  }
+  
+   .navigation {
+    position: relative;
+    z-index: 2; /* Ensure content stays above the overlay */
+  } 
+.navigation{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* align-items: center; */
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 15rem;
+}
+.logo img{
+    color: white;
+    width: 190px;
+    font-weight: bolder;
+}
+.nav-menu a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    padding: 5px 20px;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+}
+.nav-menu a:hover{
+    color: #ff9292;
+    border-bottom: 3px solid #333;
+}
+.main{
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 14rem 20rem;
+    position: relative;
+    color: white;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Ensure content stays above the overlay */
+}
+.main-content {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.main-content h1{
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.main-content p{
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.main-content button{
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.main-content button:hover{
+    background-color: #ad1f1f;
+}
+/* .main-content img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+} */
+
+.input input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
