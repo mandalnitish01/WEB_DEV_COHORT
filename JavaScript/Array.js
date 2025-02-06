@@ -30,8 +30,12 @@
 
 // Accessing Array Elements
 
-const car = ['volvo','fortuner','mercedes','KIA']
-console.log(car[3])
-console.log(car[0])
+// const car = ['volvo','fortuner','mercedes','KIA']
+// console.log(car[3])
+// console.log(car[0])
+
+
+
+
 
 
