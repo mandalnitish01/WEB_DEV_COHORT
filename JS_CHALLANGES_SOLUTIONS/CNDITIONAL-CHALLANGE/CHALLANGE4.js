@@ -20,6 +20,7 @@ function calculateGrade(marks) {
     }
   
   }
+  //simple check the marks and return grade according to the marks 
   
   // Please don't remove the code below
   const readline = require('readline');

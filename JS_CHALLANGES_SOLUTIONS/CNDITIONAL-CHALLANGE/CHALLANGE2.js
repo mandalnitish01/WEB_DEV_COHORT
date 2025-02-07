@@ -11,6 +11,7 @@ function findLargest(a, b, c) {
       return c;
     }
   }
+  //in this case you will give the input value and return whoes number is big enough
   
   // Please don't remove the code below
   const readline = require('readline');

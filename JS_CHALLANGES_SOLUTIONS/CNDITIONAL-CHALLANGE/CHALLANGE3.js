@@ -9,6 +9,7 @@ function checkVotingEligibility(age) {
       }
   }
   
+  //in this case you give the tha age if your age is greater than 18 then it will return "you are eigible for vote" if your age is less then 18 then you are not eligible for vote.
   // Please don't remove the code below
   const readline = require('readline');
   

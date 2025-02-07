@@ -9,6 +9,9 @@ function isLeapYear(year) {
     return "Not a Leap Year";
   }
   }
+  // && in AND operator check both the value if both are true then it return true.
+// || in OR operator check if only one value are true then it will return true value.
+  // in this program we will check the leep year.
   
   // Please don't remove the code below
   const readline = require('readline');

@@ -7,6 +7,7 @@ function checkEvenOdd(num) {
     else
     return 'Odd';
   }
+  // check number is  even or odd 
   
   // Please don't remove the code below
   const readline = require('readline');
