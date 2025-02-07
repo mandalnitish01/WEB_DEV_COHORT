@@ -73,9 +73,6 @@
 
 
 
-
-
-
-
+// Array Methods in js :- Array methods in js is used for easy the task for the devloper.
 
 
