@@ -134,17 +134,18 @@
 // console.log(woodentree)
 
 // Example3:- 
-const array = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-const Isprimenum =(num)=>{
-    for(let i=2;num > i;i++){
-        if(num % i == 0){
-            return false;
-        }
-    }
-    return num > 1;
-}
-let Isprime = array.filter(Isprimenum)
-console.log(Isprime)
+// const array = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+// const Isprimenum =(num)=>{
+//     for(let i=2;num > i;i++){
+//         if(num % i == 0){
+//             return false;
+//         }
+//     }
+//     return num > 1;
+// }
+// let Isprime = array.filter(Isprimenum)
+// console.log(Isprime)
+
 
 // Array.find():- The find() method of Array instances returns the first element in the provided array
 // Example1:-
@@ -169,6 +170,17 @@ console.log(Isprime)
 //   const result = inventory.find(({ name }) => name === "cherries");
 //   console.log(result); // { name: 'cherries', quantity: 5 }
 
+
+
+// Array.unshift() :- used to add element at the begning fo the array
+// const arr = [2,3]
+// const arr1 = "A"
+// let result = arr.unshift(arr1)
+// console.log(result)
+
+
+// Array.shift()
+bus.shift() //used for remove the first element of the array
 
 
 
