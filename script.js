@@ -25,10 +25,10 @@
 // console.log(p1)
 
 // array1 solution
-const obj = {
-    guestlist:["niraj","nitish"],
-    newguestlist :"subham",
-}
+// const obj = {
+//     guestlist:["niraj","nitish"],
+//     newguestlist :"subham",
+// }
 // console.log(obj.guestlist.push(obj.newguestlist))
 
 // const arr1 = "A"
@@ -60,7 +60,7 @@ const obj = {
 // const arr = ["banana","apple","orange","burger"]
 // arr.filter()
 
-const arr = [2,3]
-const arr1 = "A"
-let result = arr.unshift(arr1)
-console.log(result)
+// const arr = [2,3]
+// const arr1 = "A"
+// let result = arr.unshift(arr1)
+// console.log(result)

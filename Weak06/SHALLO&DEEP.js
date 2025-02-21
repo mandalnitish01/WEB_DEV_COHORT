@@ -18,13 +18,15 @@ const teas = {
 // console.log(teas)
 
 //FOR SHALLOW COPY
+// NOTE:- in shallow copy if we made change into on object then it affect the other object key value pairs
 let teascopy = {...teas} //shallow copy of the teas object
 teascopy.tea1.name = "blue tea"
 console.log(teascopy)
+console.log(teas)
 
 let teascopy1 = teas //referance pass kr rha hai only
 teascopy1.name = "white tea"
-console.log(teascopy1)
+// console.log(teascopy1)
 
 //DEEP COPY the teas object
 //first we change teas into string and then
@@ -35,4 +37,4 @@ let teascopy2 = JSON.parse(teastostring)
 teascopy2.caffeine = "low"
 teascopy2.tea1.name = "orange tea"
 
-console.log(teascopy2)
+// console.log(teascopy2)
