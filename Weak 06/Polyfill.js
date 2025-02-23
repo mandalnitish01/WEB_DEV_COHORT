@@ -27,9 +27,23 @@ arr.fill();
 
 
 
-// Polyfill for map 
+// Polyfill for map  :)  Array.map((current_index_element, current_index,array) => { })
+// 1.
 
-// Array.map((current_index_element, current_index,array) => { })
+if (!Array.prototype.myMap) {
+    Array.prototype.myMap = function (userFn) {
+      const result = [];
+  
+      for (let i = 0; i < this.length; i++) {
+        const value = userFn(this[i], i);
+        result.push(value);
+      }
+  
+      return result;
+    };
+  }
+
+// 2.:) Array.map((current_index_element, current_index,array) => { })
 Array.prototype.mymap =  function(cb){
     const result = [];
     for(let i=0;i<this.length;i++){
