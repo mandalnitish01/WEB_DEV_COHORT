@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Bulb</title>
+    <style>
+        .bulbclass{
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            border-radius: 50%;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div style="text-align: center;"><h2>Light Bulb Togle</h2>
+            <p>click the bulb to turn on or off the light</p></div>
+        <div class="bulbclass">
+        </div>
+        <button>Turn ON</button>
+        <p>status: <span>OFF</span></p>
+    </div>
+
+    <script>
+        const bulb = document.querySelector('.bulbclass');
+        const button = document.querySelector('button');
+        const status = document.querySelector('span');
+
+        button.addEventListener('click', function(){
+            if(bulb.style.backgroundColor === 'yellow'){
+                bulb.style.backgroundColor = '#ccc';
+                button.innerText = 'Turn ON';
+                status.textContent = 'OFF';
+            }else{
+                bulb.style.backgroundColor = 'yellow';
+                button.innerText = 'Turn OFF';
+                status.textContent = 'ON';
+            }
+        });
+    </script>
+</body>
+</html>

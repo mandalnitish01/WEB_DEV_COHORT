@@ -18,6 +18,7 @@ addbtn.addEventListener('click', ()=>{
     const delbtm = document.createElement('button');
     delbtm.innerHTML = "X";
     li.appendChild(delbtm);
+    
     delbtm.addEventListener('click', ()=>{
         li.remove();
     })

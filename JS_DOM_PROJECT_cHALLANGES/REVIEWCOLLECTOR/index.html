@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container1{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="container1">
+            <input id="name" type="text" vlaue="name" placeholder="Enter your name">
+            <input id="email" type="text" value="email" placeholder="Enter your email">
+            <textarea id="comments" name="comments"></textarea>
+            <button>Submir review</button>
+        </div>
+        <div>
+            <h2>Reviews</h2>
+            <div id="reviews"></div>
+        </div>
+    </div>
+    <script>
+        const button = document.querySelector('button');
+        let resultarray = [];
+    const result =     button.addEventListener('click', function(){
+        
+            const name = document.getElementById('name').value;
+            this.resultarray.push(name);
+            const email = document.getElementById('email').value;
+            this.resultarray.push(email);
+            const comments = document.getElementById('comments').value;
+            this.resultarray.push(comments);
+        });
+        console.log(resultarray)
+    </script>
+</body>
+</html>
