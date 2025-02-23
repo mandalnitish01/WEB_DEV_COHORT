@@ -6,4 +6,3 @@ function calculatetotal(amount){
      else return "Saara paisa bharo nhi to Bartan dhooow"
 }
 console.log(calculatetotal(500)) 
-
