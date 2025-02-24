@@ -50,7 +50,7 @@ let expenseReport = expenses.reduce(
   { Food: 0, Utilities: 0 }
 );
 
-// console.log("Expense Report", expenseReport);
+console.log("Expense Report", expenseReport);
 
 let tasks = [
   { description: "Write report", completed: false, priority: 2 },
@@ -77,7 +77,7 @@ let averageRatings = movieRatings.map((movie) => {
   //   return movie;
   return { title: movie.title, ratings: average.toFixed(2) };
 });
-console.log(averageRatings);
-console.log(movieRatings);
+// console.log(averageRatings);
+// console.log(movieRatings);
 
 [{ title: "Movie A", ratings: 3.3 }, {}];
