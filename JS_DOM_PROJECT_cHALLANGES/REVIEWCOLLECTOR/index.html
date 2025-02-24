@@ -17,9 +17,9 @@
 <body>
     <div>
         <div class="container1">
-            <input id="name" type="text" vlaue="name" placeholder="Enter your name">
-            <input id="email" type="text" value="email" placeholder="Enter your email">
-            <textarea id="comments" name="comments"></textarea>
+            <input id="name" type="text" vlaue="name" placeholder="Enter your name" required>
+            <input id="email" type="email" value="email" placeholder="Enter your email" required >
+            <textarea id="comments" name="comments" required></textarea>
             <button>Submir review</button>
         </div>
         <div>
@@ -28,18 +28,24 @@
         </div>
     </div>
     <script>
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const comments = document.getElementById('comments');
         const button = document.querySelector('button');
-        let resultarray = [];
-    const result =     button.addEventListener('click', function(){
-        
-            const name = document.getElementById('name').value;
-            this.resultarray.push(name);
-            const email = document.getElementById('email').value;
-            this.resultarray.push(email);
-            const comments = document.getElementById('comments').value;
-            this.resultarray.push(comments);
+        const reviews = document.getElementById('reviews');
+
+        button.addEventListener('click', function(){
+            const review = document.createElement('div');
+            review.innerHTML = `
+                <h3>${name.value}</h3>
+                <h4>${email.value}</h4>
+                <p>${comments.value}</p>
+            `;
+            reviews.appendChild(review);
+            name.value = '';
+            email.value = '';
+            comments.value = '';
         });
-        console.log(resultarray)
     </script>
 </body>
 </html>

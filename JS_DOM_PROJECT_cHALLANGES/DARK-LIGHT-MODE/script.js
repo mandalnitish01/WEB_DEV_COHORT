@@ -1,5 +1,5 @@
 const theamchanger = document.getElementById('theam-change');
-
+const buttons = document.querySelectorAll('button');
 function changebgcolor(color){
     document.body.style.backgroundColor = color;
 }
