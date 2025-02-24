@@ -1,0 +1,1 @@
+<!-- dusre ke server se jaa kr data laate ho , woo js me nhi hai means network call too js jo hai woo network call nhi hota hai browser se network call hota hai -->
