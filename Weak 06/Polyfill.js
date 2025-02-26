@@ -42,8 +42,16 @@ if (!Array.prototype.myMap) {
       return result;
     };
   }
+//   Ex:-
+const num = [1,2,3,4]
+const multipleof2 = num.myMap((num)=>{
+    return num*2;
+});
+console.log(multipleof2)
 
 // 2.:) Array.map((current_index_element, current_index,array) => { })
+
+    if (!Array.prototype.mymap){
 Array.prototype.mymap =  function(cb){
     const result = [];
     for(let i=0;i<this.length;i++){
@@ -53,12 +61,8 @@ Array.prototype.mymap =  function(cb){
     }
     return result;
 };
+    }
 // Examples 
-const num = [1,2,3,4]
-const multipleof2 = num.mymap((num)=>{
-    return num*2;
-});
-console.log(multipleof2)
 const multipleof3 = num.mymap((num)=>{
     return num*3;
 });
@@ -108,7 +112,7 @@ console.log(myfilterarray)
 
 
 // Polyfill for foreach
-// foreach(current_index_value, current_index)
+// 1
 if(!Array.prototype.myforeach){
     Array.prototype.myforeach = function(callback){
         const temp = this;
@@ -123,3 +127,39 @@ const result2 = arr2.myforeach((num,index)=>{
     console.log(`The index ${index} at present value is ${num}`)
 })
 console.log(result2)
+
+// 2.
+if(!Array.prototype.myforeach1){
+    Array.prototype.myforeach = function(callback){
+        for(let i=0;i<this.length;i++){
+            callback(temp[i],i);
+        }
+    }
+}
+const arr3 = [1,2,3,4,5,6,7]
+const result3 = arr2.myforeach1((num,index)=>{
+    console.log(`The index ${index} at present value is ${num}`)
+})
+console.log(result3)
+
+
+
+
+if(!Array.prototype.Myreduce) {
+    Array.prototype.Myreduce = function(callback,initialValue){
+        let accumulator = initialValue === undefined ? undefined : initialValue;
+        for(let i=0;i<this.length;i++){
+            if(accumulator !== undefined){
+                accumulator = callback.call(undefined,accumulator,this[i],i,this)
+            }else{
+                accumulator = this[i];
+            }
+        }
+        return accumulator;
+    }
+}
+const arr4 = [1,2,3,4,5,6,7]
+const result4 = arr4.Myreduce((acc,num)=>{
+    return acc+num;
+},0)
+console.log(result4)
