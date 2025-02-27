@@ -1,25 +1,26 @@
 const todoinput = document.getElementById('todo-input');
 const addbtn = document.getElementById('add-btn');
 const taskadd = document.getElementById('adding-task-into-the-list');
-addbtn.addEventListener('click', ()=>{
 
-    //adding task into the list
+addbtn.addEventListener('click', () => {
     const value = todoinput.value;
-    // console.log(value)
-    const li = document.createElement('li');
-    li.innerHTML = value;
-    // console.log(li)
-    taskadd.appendChild(li);
+     const li = document.createElement('li');
+    if (!value) {
+       li.textContent = "not a number!"
+      taskadd.appendchild(li)
+    }
 
-    //after adding empty input
+    li.textContent = value;
+    taskadd.appendChild(li);
+    
+    // Clear input field
     todoinput.value = "";
 
-    //delete the task from the todo
-    const delbtm = document.createElement('button');
-    delbtm.innerHTML = "X";
-    li.appendChild(delbtm);
+    // Create delete button
+    const delbtn = document.createElement('button');
+    delbtn.textContent = "X";
+    delbtn.style.marginLeft = "10px";
+    delbtn.addEventListener('click', () => li.remove());
     
-    delbtm.addEventListener('click', ()=>{
-        li.remove();
-    })
-})
+    li.appendChild(delbtn);
+});

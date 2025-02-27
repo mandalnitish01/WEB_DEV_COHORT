@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Profile form</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam excepturi accusamus, aspernatur enim deserunt voluptas.</p>
+    <div  style="display: flex; flex-direction: column; gap: 10px;">
+<label for="">Name:</label>
+<input style="width: 200px;" id="name" type="text" placeholder="enter name">
+
+<label  for="" >job title:</label>
+<input style="width: 200px;" id="jobtitle" type="text" placeholder="job title">
+
+<label for="">age:</label>
+<input style="width: 200px;" id="age" type="text" placeholder="enter age">
+
+<label for="">Bio:</label>
+<input style="width: 200px;" id="bio" type="text" placeholder="enter bio">
+    </div>
+    <div>
+        <h2>Profie preview</h2>
+        <div style="border: 1px solid #ccc; padding: 10px; width: 200px; overflow-x: scroll;">
+            <p>Name : <span id="preview-name"></span> </p>
+            <p>job title : <span id="preview-job"></span></p>
+            <p>age : <span id="preview-age"></span></p>
+            <p>bio : <span id="preview-bio"></span></p> 
+        </div>
+    </div>
+    <script>
+        const Uname = document.getElementById("name");
+        const job = document.getElementById("jobtitle");
+        const age = document.getElementById("age");
+        const bio = document.getElementById("bio");
+
+        const Pname = document.getElementById("preview-name");
+        const Pjob = document.getElementById("preview-job");
+        const Page = document.getElementById("preview-age");
+        const Pbio = document.getElementById("preview-bio");
+        
+        Uname.addEventListener('input', function(){
+            Pname.textContent = this.value || 'Not provided';
+            // Pname.innerText = `Name : ${name.value}`
+        })
+        job.addEventListener('input' , function(){
+            Pjob.textContent = this.value || 'Not provided';
+            // Pjob.innerText = `Job title : ${job.value}`
+        })
+        age.addEventListener('input', function(){
+            // Page.innerText = `Age : ${age.value}`
+            Page.textContent = this.value || 'Not provided';
+        })
+        bio.addEventListener('input' , function(){
+        //    Pbio.innerText = `Bio : ${bio.value}`
+           Pbio.textContent = this.value || 'Not provided';
+        })
+
+    </script>
+</body>
+</html>
