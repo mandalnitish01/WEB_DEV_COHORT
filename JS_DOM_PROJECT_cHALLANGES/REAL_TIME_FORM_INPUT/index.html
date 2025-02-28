@@ -42,11 +42,24 @@
         const Pbio = document.getElementById("preview-bio");
         
         Uname.addEventListener('input', function(){
-            Pname.textContent = this.value || 'Not provided';
+            if(this.value.length >0)
+        {
+            Pname.textContent = this.value;
+        }
+        else{
+            Pname.textContent = 'Not provided';
+        }
+            // Pname.textContent = this.value || 'Not provided';
             // Pname.innerText = `Name : ${name.value}`
         })
         job.addEventListener('input' , function(){
-            Pjob.textContent = this.value || 'Not provided';
+            if(this.value.length > 0){
+                Pjob.textContent = this.value;
+            }
+            else{
+                Pjob.textContent = 'Not provided';
+            }
+            // Pjob.textContent = this.value || 'Not provided';
             // Pjob.innerText = `Job title : ${job.value}`
         })
         age.addEventListener('input', function(){
