@@ -24,7 +24,7 @@
 <body>
 
     <div class="container">
-        <div style="text-align: center;"><h2>Light Bulb Togle</h2>
+        <div><h2>Light Bulb Togle</h2>
             <p>click the bulb to turn on or off the light</p></div>
         <div class="bulbclass">
         </div>
@@ -42,12 +42,17 @@
                 bulb.style.backgroundColor = '#ccc';
                 button.innerText = 'Turn ON';
                 status.textContent = 'OFF';
+               
             }else{
                 bulb.style.backgroundColor = 'yellow';
                 button.innerText = 'Turn OFF';
                 status.textContent = 'ON';
+                body.style.backgroundColor = 'black';
             }
         });
     </script>
 </body>
 </html>
+
+
+
