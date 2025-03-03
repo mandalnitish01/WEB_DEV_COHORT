@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .board {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+        .column {
+            background: #f4f4f4;
+            padding: 10px;
+            min-width: 200px;
+            border-radius: 5px;
+        }
+        .task {
+            background: white;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: grab;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Kanban Board</h2>
+    <button onclick="addColumn()">Add Column</button>
+    <div class="board" id="board">
+        <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h3>To Do</h3>
+            <button onclick="addTask(this)">Add Task</button>
+        </div>
+    </div>
+    <script>
+        function addTask(button) {
+            let taskText = prompt("Enter task name:");
+            if (taskText) {
+                let task = document.createElement("div");
+                task.className = "task";
+                task.draggable = true;
+                task.ondragstart = drag;
+                task.textContent = taskText;
+                button.parentElement.appendChild(task);
+            }
+        }
+
+        function addColumn() {
+            let columnName = prompt("Enter column name:");
+            if (columnName) {
+                let column = document.createElement("div");
+                column.className = "column";
+                column.ondrop = drop;
+                column.ondragover = allowDrop;
+                column.innerHTML = `<h3>${columnName}</h3><button onclick="addTask(this)">Add Task</button>`;
+                document.getElementById("board").appendChild(column);
+            }
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.outerHTML);
+            event.target.remove();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            let data = event.dataTransfer.getData("text");
+            event.target.closest(".column").innerHTML += data;
+        }
+    </script>
+</body>
+</html>
