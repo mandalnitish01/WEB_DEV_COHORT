@@ -67,7 +67,17 @@
       box-shadow: 0 0 18px 6px rgba(0, 0, 0, 0.4);
     }
   }
-  
+  .card-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 2px;
+  }
+  .todo-result-desc{
+    display: flex;
+    justify-content: space-between;
+  }
   .board {
     padding: 10px;
     height: 80vh;
