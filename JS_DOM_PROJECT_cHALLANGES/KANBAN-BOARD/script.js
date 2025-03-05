@@ -40,7 +40,7 @@ addnewboard.addEventListener("click", function () {
     board.classList.add("board");
 
     board.innerHTML = `
-    <header class="board-header">
+    <header class="board-header" id="header">
           <div class="header-title">
             <p class="circle" id="todo-circle"></p>
             <h4>${boarddata}</h4>
@@ -60,27 +60,33 @@ addnewboard.addEventListener("click", function () {
 });
 
 
-const allboard = document.querySelectorAll('.board')
-const allitems = document.querySelectorAll('.item')
+// const allboard = document.querySelectorAll('.board')
+// const allitems = document.querySelectorAll('.item')
+// let draggedItem = null;
 
-allitems.forEach((item)=>{
+// allitems.forEach((item)=>{
 
-  item.addEventListener("dragstart",()=>{
-    item.classList.add("flying")
-    // console.log(item)
-  })
-  
+//   item.addEventListener("dragstart",()=>{
+//     draggedItem = item;
+//     item.classList.add("flying");
+//     console.log(item, "flying added");
+//   });
 
- item.addEventListener("dragend",()=>{
-    item.classList.remove("flying")
-    // console.log(item)
-  })
-})
+//  item.addEventListener("dragend",()=>{
+//   item.classList.remove("flying");
+//   console.log(item, "flying removed from the item");
+//   });
+// })
 
+// allboard.forEach((board)=>{
+//   board.addEventListener("dragover" , function(event){
+//     event.preventDefault(); // Necessary for drop to work
+//   });
+//   board.addEventListener("drop", () => {
+//     if (draggedItem) {
+//         board.appendChild(draggedItem);
+//         console.log("Item dropped into board:", board);
+//     }
+// });
 
-allboard.forEach((board)=>{
-  board.addEventListener("dragover" , function(){
-    const flyingelement = document.querySelector(".flying")
-    console.log(board,"kuch mere upar se jaa rha hai!",flyingelement)
-  })
-})
+// })

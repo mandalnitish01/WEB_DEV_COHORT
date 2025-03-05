@@ -14,12 +14,19 @@
     display: flex;
     gap: 8px;
   }
-  
+  #navsection{
+    padding: 10px 20px;
+  }
   .board-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: rgb(66, 67, 67);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.075) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ background-blend-mode: multiply,multiply;
+  }
+  #header{
+    padding: 9px 20px;
   }
   .header-title {
     display: flex;

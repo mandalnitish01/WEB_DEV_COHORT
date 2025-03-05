@@ -11,7 +11,7 @@
     />
   </head>
   <body>
-    <div class="board-header">
+    <div class="board-header" id="navsection">
       <h2 id="title">Kanban board</h2>
       <div class="btns">
         <button id="add-new-card">+ Add new card</button>
@@ -20,7 +20,7 @@
     </div>
     <main id="containerbox" class="container">
       <section class="board">
-        <header class="board-header">
+        <header class="board-header" id="header">
           <div class="header-title">
             <p class="circle" id="todo-circle"></p>
             <h4>Todo</h4>
@@ -39,7 +39,7 @@
       </section>
 
       <section class="board">
-        <header class="board-header">
+        <header class="board-header" id="header">
           <div class="header-title">
             <p class="circle" id="in-progress-circle"></p>
             <h4>In Progress</h4>
@@ -53,11 +53,13 @@
           </div>
         </header>
         <!-- progress-cards -->
-        <div class="todo-cards"></div>
+        <div class="todo-cards">
+
+        </div>
       </section>
 
       <section class="board">
-        <header class="board-header">
+        <header class="board-header" id="header">
           <div class="header-title">
             <p class="circle" id="completed-circle"></p>
             <h4>Completed</h4>
