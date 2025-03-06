@@ -1,83 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Kanban board</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Kanban Board</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
     <div class="board-header" id="navsection">
-      <h2 id="title">Kanban board</h2>
-      <div class="btns">
-        <button id="add-new-card">+ Add new card</button>
-        <button id="add-new-board">+ Add new board</button>
-      </div>
+        <h2 id="title">Kanban Board</h2>
+        <div class="btns">
+            <button id="add-new-card">+ Add New Card</button>
+            <button id="add-new-board">+ Add New Board</button>
+        </div>
     </div>
+    
     <main id="containerbox" class="container">
-      <section class="board">
-        <header class="board-header" id="header">
-          <div class="header-title">
-            <p class="circle" id="todo-circle"></p>
-            <h4>Todo</h4>
-          </div>
-          <div class="display">
-            <p id="todo-count" class="cards-count"></p>
-            <button class="del-btn"><i class="fa-solid fa-trash"></i></button>
-            <button class="edit-board-btn del-btn"><i class="fa-solid fa-pen"></i></button>
-          </div>
-        </header>
-
-        <!-- todo-cards -->
-        <div  id="todo-cards">
-          
-        </div>
-      </section>
-
-      <section class="board">
-        <header class="board-header" id="header">
-          <div class="header-title">
-            <p class="circle" id="in-progress-circle"></p>
-            <h4>In Progress</h4>
-          </div>
-          <div class="display">
-            <p id="in-progress-count" class="cards-count"></p>
-            <button class="del-btn"><i class="fa-solid fa-trash"></i></button>
-            <button class="edit-board-btn del-btn">
-              <i class="fa-solid fa-pen"></i>
-            </button>
-          </div>
-        </header>
-        <!-- progress-cards -->
-        <div class="todo-cards">
-
-        </div>
-      </section>
-
-      <section class="board">
-        <header class="board-header" id="header">
-          <div class="header-title">
-            <p class="circle" id="completed-circle"></p>
-            <h4>Completed</h4>
-          </div>
-          <div class="display">
-            <p id="completed-count" class="cards-count"></p>
-            <button class="del-btn"><i class="fa-solid fa-trash"></i></button>
-            <button class="edit-board-btn del-btn">
-              <i class="fa-solid fa-pen"></i>
-            </button>
-          </div>
-        </header>
-        <!-- completed-cards -->
-        <div class="todo-cards">
-        </div>
-
-      </section>
+        <section class="board">
+            <header class="board-header">
+                <div class="header-title">
+                    <p class="circle"></p>
+                    <h4>Todo</h4>
+                </div>
+                <div class="display">
+                    <p class="cards-count"></p>
+                    <button class="del-btn"><i class="fa-solid fa-trash"></i></button>
+                    <button class="edit-board-btn del-btn"><i class="fa-solid fa-pen"></i></button>
+                </div>
+            </header>
+            <div class="items"></div>
+        </section>
     </main>
-    <script src="script.js"></script>
-  </body>
+    
+   <script src="script.js"></script>
+</body>
 </html>

@@ -1,32 +1,32 @@
 const addnewcard = document.getElementById("add-new-card");
-const cardintodiv = document.getElementById("todo-cards");
+// const cardintodiv = document.getElementById("todo-cards");
 const addnewboard = document.getElementById("add-new-board");
+const allsections = document.getElementById("boardc")
 addnewcard.addEventListener("click", function () {
   const pararesult = prompt("Enter the detail!");
 
   if (pararesult) {
     const card = document.createElement("div"); // Create a new div element
-    card.classList.add("todo-card"); // Add a class name
-
+    card.classList.add("item"); // Add a class name
+    card.setAttribute("draggable", true); // Make it draggable
     card.innerHTML = `
-    <div draggable="true" class="item">
-    <div class="todo-result-desc" >
-      <p>${pararesult}</p>
-      <div>
-    <small class="date">${new Date().toLocaleDateString()}</small>
-            <small class="date">${new Date().getHours()}:${new Date().getMinutes()}</small>
-    </div>
-    </div>
-            <div class="card-container">
-             <button class="del-btn"><i class="fa-solid fa-trash"></i></button>
+       <div class="todo-result-desc" >
+         <p>${pararesult}</p>
+            <div>
+              <small class="date">${new Date().toLocaleDateString()}</small>
+              <small class="date">${new Date().getHours()}:${new Date().getMinutes()}</small>
+            </div>
+         </div>
+         <div class="card-container">
+            <button class="del-btn"><i class="fa-solid fa-trash"></i></button>
             <button class="edit-board-btn del-btn">
               <i class="fa-solid fa-pen"></i>
             </button>
-            </div> 
-             </div>
+         </div> 
         `;
-
-    cardintodiv.appendChild(card); // Append the new element properly
+        // console.log(card)
+    // cardintodiv.appendChild(card); // Append the new element properly
+    allsections.appendChild(card); // Append the new element properly
   }
 });
 
@@ -54,39 +54,28 @@ addnewboard.addEventListener("click", function () {
 
         <div  id="todo-cards"></div>
     `;
-    console.log(board);
+    // console.log(board);
     container.appendChild(board);
   }
 });
 
 
-// const allboard = document.querySelectorAll('.board')
-// const allitems = document.querySelectorAll('.item')
-// let draggedItem = null;
 
-// allitems.forEach((item)=>{
+// dragover 
+const allboards = document.querySelectorAll(".board")
+allboards.forEach(board =>{
+  board.addEventListener("dragover",() =>{
+    console.log(board,"kuch to hoo rha hai!")
+  })
+})
 
-//   item.addEventListener("dragstart",()=>{
-//     draggedItem = item;
-//     item.classList.add("flying");
-//     console.log(item, "flying added");
-//   });
+const allitems = document.querySelectorAll(".item")
 
-//  item.addEventListener("dragend",()=>{
-//   item.classList.remove("flying");
-//   console.log(item, "flying removed from the item");
-//   });
-// })
-
-// allboard.forEach((board)=>{
-//   board.addEventListener("dragover" , function(event){
-//     event.preventDefault(); // Necessary for drop to work
-//   });
-//   board.addEventListener("drop", () => {
-//     if (draggedItem) {
-//         board.appendChild(draggedItem);
-//         console.log("Item dropped into board:", board);
-//     }
-// });
-
-// })
+allitems.forEach((item) =>{
+  item.addEventListener('dragstart' , ()=>{
+    item.classList.add("flying")
+  })
+  item.addEventListener('dragend' , ()=>{
+    item.classList.remove("flying")
+  })
+})
