@@ -1,0 +1,1 @@
+# mongoose: - it is used for communicate with the DB if any operation we wanted to perform
