@@ -4,6 +4,12 @@ import dotenv from "dotenv"
 import cors from "cors"
 import db from "./utils/db.js" //.js kabhi kabhi lagta hai bss isse lagane se configration set ho jatahai
 
+//import all routes
+import userRoutes from "./routes/user.routs.js"
+import userlogin  from "./routes/user.routs.js"
+import admindashboard from './routes/user.routs.js'
+
+
 const app = express()
 dotenv.config() //it holds the senstive materials means important information
 
@@ -34,6 +40,9 @@ app.get("/niraj" , (req,res)=>{ //route start with /npm i dotenv
 
 // console.log(process.env.PORT)
 db();
+app.use("/api/v1/user",userRoutes)
+app.use("/api/v1/user",userlogin)
+app.use("/api/v1/user",admindashboard)
 app.listen(port, () => { //port is used for render the particular page. means route krte hai.
   console.log(`Example app listening on port ${port}`)
 })
