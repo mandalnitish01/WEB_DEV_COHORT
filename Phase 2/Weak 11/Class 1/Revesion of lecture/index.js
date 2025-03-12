@@ -6,8 +6,8 @@ import db from "./utils/db.js" //.js kabhi kabhi lagta hai bss isse lagane se co
 
 //import all routes
 import userRoutes from "./routes/user.routs.js"
-import userlogin  from "./routes/user.routs.js"
-import admindashboard from './routes/user.routs.js'
+// import userlogin  from "./routes/user.routs.js"
+// import admindashboard from './routes/user.routs.js'
 
 
 const app = express()
@@ -22,7 +22,7 @@ app.use(cors({ //used for send the request to the particular server. koie or nhi
 
 }));
 app.use(express.json());
-app.use(express.urlencoded({extended:true})); //handle url encoded ex:- search :- nitish%20kr  %20 is the space so in express.urlencoded user to solve this
+app.use(express.urlencoded({extended:true})); //handle url encoded ex:- search :- nitish%20kr  %20 is the space so in express.urlencoded used to solve this.
 
 
 const port = process.env.PORT || 3000;
@@ -41,8 +41,8 @@ app.get("/niraj" , (req,res)=>{ //route start with /npm i dotenv
 // console.log(process.env.PORT)
 db();
 app.use("/api/v1/user",userRoutes)
-app.use("/api/v1/user",userlogin)
-app.use("/api/v1/user",admindashboard)
+// app.use("/api/v1/user",userlogin)
+// app.use("/api/v1/user",admindashboard)
 app.listen(port, () => { //port is used for render the particular page. means route krte hai.
   console.log(`Example app listening on port ${port}`)
 })
