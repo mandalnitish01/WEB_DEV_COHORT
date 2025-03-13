@@ -1,0 +1,93 @@
+<!-- ## Challenge 1: Light Bulb Toggle 💡 🌚
+
+- Create a webpage featuring a light bulb image or representation.
+- Implement a button that toggles the light bulb between on and off states.
+- When the bulb is on, it should appear in yellow or gold (or any other suitable color) with a glow effect.
+- When the bulb is off, it should appear gray with no glow.
+- The button text should dynamically update based on the bulb’s state (e.g., "Turn On" / "Turn Off").
+- Apply a dark mode effect to the page when the bulb is off. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toogle bulb</title>
+  </head>
+  <style>
+    .circlepara {
+      width: 200px;
+      height: 200px;
+      border: 2px solid black;
+      border-radius: 200px;
+    }
+    .rectanglepara {
+      width: 40px;
+      height: 60px;
+      border: 2px solid black;
+    }
+    .div-2 {
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
+    }
+    .main-div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .heading2 {
+      font-size: 60px;
+      font-family: sans-serif;
+      gap: 10px;
+    }
+    .heading3 {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 30px;
+    }
+    span {
+      font-size: 40px;
+    }
+    .button {
+      width: 100px;
+      height: 40px;
+    }
+  </style>
+  <body>
+    <main class="main-div">
+      <h2 class="heading2">Toogle bulb in js</h2>
+      <div class="div-2">
+        <p class="circlepara" id="light"></p>
+        <p class="rectanglepara" id="rectanglepara"></p>
+      </div>
+      <h3 class="heading3">ststus <span id="status">OF</span></h3>
+      <button class="button" id="button">ON</button>
+    </main>
+
+    <script>
+      const light = document.getElementById("light");
+      const status = document.getElementById("status");
+      const button = document.getElementById("button");
+      const rect = document.getElementById("rectanglepara")
+      button.addEventListener("click", () => {
+        if (light.style.background === "yellow") {
+          light.style.background = "white"; // Change background color
+          document.body.style.background = "white"
+          status.innerText = "OFF"; // Update status text
+          button.innerText = "ON"; // Change button text
+          rect.style.background = "white"
+
+        }
+        else{
+            light.style.background = "yellow";
+            document.body.style.background = "gray"
+            status.innerText = "ON";
+            button.innerText = "OFF"
+            rect.style.background = "black"
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!-- ## Challenge 2: Change Text Color 🦎
+
+- Create a webpage with a heading that says "Change My Color!"
+- Add five buttons: Red, Green, Blue, Purple (or any four colors of your choice) and Reset.
+- When a color button is clicked, the heading’s text color should change to the corresponding color.
+- Clicking the Reset button should restore the text color to black. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change text color</title>
+  </head>
+  <body>
+    <div>
+      <h1>Change text color</h1>
+      <p id="changecolor">
+        Text thhere color will be change after the click on the button and the
+        color is <span id="color-text">color</span>
+      </p>
+      <div>
+        <button data-color="red">Red</button>
+        <button data-color="Brown">Brown</button>
+        <button data-color="green">Green</button>
+        <button data-color="blue">Blue</button>
+        <button data-color="Orange">Orange</button>
+      </div>
+    </div>
+    <script>
+        const button = document.querySelectorAll("button");
+        const colortext = document.getElementById("color-text")
+        const changecolor = document.getElementById("changecolor")
+        button.forEach((button)=>{
+            button.addEventListener("click" , ()=> {
+                const selectedColor = button.getAttribute("data-color");
+                 // Get color from data attribute
+                 colortext.style.background = selectedColor; // Change text color
+                 colortext.style.color = "white"; // Change text color
+                
+                 colortext.innerText = selectedColor; // Update text
+                 changecolor.style.color = selectedColor;
+            })
+        })
+    </script>
+  </body>
+</html>

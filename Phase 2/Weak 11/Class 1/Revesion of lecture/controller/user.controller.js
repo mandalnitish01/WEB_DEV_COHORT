@@ -12,7 +12,7 @@ if(!name || !email || !password)
         messege : "All fields are required!",
     });
 }
-console.log(email)
+console.log(name)
 // res.json({ message: "User registered successfully!" });
 }
 

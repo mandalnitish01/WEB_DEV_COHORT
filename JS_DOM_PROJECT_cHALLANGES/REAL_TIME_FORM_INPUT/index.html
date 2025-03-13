@@ -24,10 +24,10 @@
     <div>
         <h2>Profie preview</h2>
         <div style="border: 1px solid #ccc; padding: 10px; width: 200px; overflow-x: scroll;">
-            <p>Name : <span id="preview-name"></span> </p>
-            <p>job title : <span id="preview-job"></span></p>
-            <p>age : <span id="preview-age"></span></p>
-            <p>bio : <span id="preview-bio"></span></p> 
+            <p>Name : <span id="preview-name">Not Provided</span> </p>
+            <p>job title : <span id="preview-job">Not Provided</span></p>
+            <p>age : <span id="preview-age">Not Provided</span></p>
+            <p>bio : <span id="preview-bio">Not Provided</span></p> 
         </div>
     </div>
     <script>
@@ -42,24 +42,24 @@
         const Pbio = document.getElementById("preview-bio");
         
         Uname.addEventListener('input', function(){
-            if(this.value.length >0)
-        {
-            Pname.textContent = this.value;
-        }
-        else{
-            Pname.textContent = 'Not provided';
-        }
-            // Pname.textContent = this.value || 'Not provided';
+        //     if(this.value.length >0)
+        // {
+        //     Pname.textContent = this.value;
+        // }
+        // else{
+        //     Pname.textContent = 'Not provided';
+        // }
+            Pname.textContent = this.value || 'Not provided';
             // Pname.innerText = `Name : ${name.value}`
         })
         job.addEventListener('input' , function(){
-            if(this.value.length > 0){
-                Pjob.textContent = this.value;
-            }
-            else{
-                Pjob.textContent = 'Not provided';
-            }
-            // Pjob.textContent = this.value || 'Not provided';
+            // if(this.value.length > 0){
+            //     Pjob.textContent = this.value;
+            // }
+            // else{
+            //     Pjob.textContent = 'Not provided';
+            // }
+            Pjob.textContent = this.value || 'Not provided';
             // Pjob.innerText = `Job title : ${job.value}`
         })
         age.addEventListener('input', function(){

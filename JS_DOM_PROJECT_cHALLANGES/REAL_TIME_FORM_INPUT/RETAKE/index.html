@@ -1,0 +1,73 @@
+<!-- ## Challenge 3: Real-time Form Input Display 📋
+
+- Design a profile form with the following fields:
+  - Name (text input)
+  - Job Title (text input)
+  - Age (number input)
+  - Bio (textarea)
+- Create a "Profile Preview" section that dynamically displays the entered information.
+- The preview should update in real-time as the user types.
+- If a field is left empty, display "Not provided" in the preview instead. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real time form input</title>
+</head>
+<body>
+    <main>
+        <div>
+            <h2>Profile Form</h2>
+            <p>
+                Enter your information below to see it displayed in real-time:</p>
+                <div>
+                    <label for="name">Name</label>
+                    <input id="name" type="text" placeholder="Enter your name">
+
+                    <label for="job">Job Title:</label>
+                    <input id="job" type="text" placeholder="Enter your Job title">
+
+                    <label for="age">Age:</label>
+                    <input id="age" type="number" placeholder="Enter your age">
+
+                    <label for="bio">Bio:</label>
+                    <input id="bio" type="text" placeholder="Tell us about yourself">
+                </div>
+        </div>
+    </main>
+    <div>
+        <h2>Profile review</h2>
+        <p>Name : <span id="rname">Not provided</span></p>
+        <p>Job title : <span id="rjob">Not provided</span></p>
+        <p>Age : <span id="rage">Not provided</span></p>
+        <p>Bio : <span id="rbio">Not provided</span></p>
+    </div>
+    <script>
+const uname  = document.getElementById("name")
+const job = document.getElementById("job")
+const age = document.getElementById("age")
+const bio = document.getElementById("bio")
+
+const rname = document.getElementById("rname")
+const rjob =  document.getElementById("rjob")
+const rage = document.getElementById("rage")
+const rbio = document.getElementById("rbio")
+uname.addEventListener('input' , (event)=>{
+    rname.textContent = event.target.value || "Not provided"
+})
+job.addEventListener("input" , (event)=>{
+    rjob.textContent = event.target.value || "Not Provided"
+})
+age.addEventListener("input" , (event)=>{
+    rage.textContent = event.target.value || "Not provided"
+})
+bio.addEventListener("input" , (event)=>{
+    rbio.textContent = event.target.value || "Not Provided"
+})
+
+    </script>
+</body>
+</html>
