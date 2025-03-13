@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    text-align: center;
+}
+.heading{
+    font-size: 40px;
+}
+.inputaddbtn{
+    display: inline;
+    gap: 20px;
+}
+.addtext{
+    width: 300px;
+    height: 30px;
+}
+.addbtn{
+    width: 70px;
+    height: 30px;
+}
+.taskdiv{
+    margin-top: 30px;
+    text-align: center;
+}
+.brforetask.active{
+    font-style: italic;
+    font-size:18px;
+    word-spacing: 2px;
+}
+.countdiv{
+    margin-top: 20px;
+    display: flex;
+    gap: 180px;
+    margin-left: 40%;
+}
+.addedtasks{
+    display: flex;
+    margin-left: 40%;
+    gap: 150px;
+}
+.checktask{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.checktask p{
+    font-size: 20px;
+}
+.checktask input{
+    font-size: 20px;
+}
+button{
+    width: 50px;
+    height: 30px;
+}
