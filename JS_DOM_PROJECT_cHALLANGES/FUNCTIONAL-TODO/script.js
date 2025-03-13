@@ -2,10 +2,12 @@ const addtextbtn = document.getElementById("addtextbtn");
 const addbtn = document.getElementById("addbtn");
 const taskdiv = document.getElementById("taskdiv");
 const incrment = document.getElementById("incrementcount")
-const complete = document.getElementById("clicktask")
+const whennotextadded = document.getElementById("whennotextadded")
 let counter = 0;
 addbtn.addEventListener("click", () => {
+    
     const value = addtextbtn.value.trim();
+    console.log(value)
     if (value === "") return; // Prevent empty tasks
 
     const div = document.createElement("div");
@@ -16,7 +18,7 @@ addbtn.addEventListener("click", () => {
 
     div.innerHTML = `
         <div class="checktask">
-            <input id="${checkbox}"  type="checkbox">
+            <input id="checkbox"  type="checkbox">
             <p class="task-text">${value}</p>
         </div>
         <div>
@@ -25,7 +27,7 @@ addbtn.addEventListener("click", () => {
         </div>
     `;
     incrment.innerText = counter;
-
+    whennotextadded.innerText = ""
     taskdiv.appendChild(div);
     addtextbtn.value = "";
 
