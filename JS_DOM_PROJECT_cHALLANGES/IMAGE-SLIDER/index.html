@@ -1,0 +1,72 @@
+<!-- ## Challenge 5: Image Carousel Application 🖼️
+
+### Image Display
+
+- Display a set of images in a carousel format.
+- Only one image should be visible at a time.
+- Each image should have a caption displayed at the bottom.
+
+### Navigation Controls
+
+- Users should be able to navigate through the images using:
+  - A "Next" button to move to the next image.
+  - A "Previous" button to go back to the previous image.
+  - Clicking on an indicator dot to jump to a specific image.
+
+### Automatic Slideshow
+
+- Support an auto-play mode where images transition automatically.
+- Users should be able to start and stop the auto-play mode with a button.
+- Display a timer showing how many seconds remain before the next image transition.
+
+### Indicators
+
+- Display navigation dots (indicators) below the carousel.
+- The indicator for the active image should be highlighted.
+- Clicking an indicator should navigate directly to the corresponding image. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="slide active">
+                <img src="https://plus.unsplash.com/premium_photo-1691855258203-a651aec0af5d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D" alt="Image 1">
+                <p class="caption">Caption for Image 1</p>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1741482528337-20ecc80c2fe8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOHx8fGVufDB8fHx8fA%3D%3D" alt="Image 2">
+                <p class="caption">Caption for Image 2</p>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1741567348603-0bef4612bea2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyMnx8fGVufDB8fHx8fA%3D%3D" alt="Image 3">
+                <p class="caption">Caption for Image 3</p>
+            </div>
+        </div>
+
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+
+        <div class="indicators">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+
+        <div class="autoplay-controls">
+            <button id="autoplayBtn">Start Auto-Play</button>
+            <p id="timer">Next in: <span id="countdown">3</span>s</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -7,7 +7,7 @@ let counter = 0;
 addbtn.addEventListener("click", () => {
     
     const value = addtextbtn.value.trim();
-    console.log(value)
+    // console.log(value)
     if (value === "") return; // Prevent empty tasks
 
     const div = document.createElement("div");
