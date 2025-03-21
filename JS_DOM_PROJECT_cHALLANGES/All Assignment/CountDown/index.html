@@ -30,24 +30,25 @@
         const display = document.getElementById("countdownDisplay");
 
         function starttimer(){
-            const timeinVal = parseInt(timeinput.value);
+            let timeinVal = parseInt(timeinput.value);
+            console.log(timeinVal)
             if(isNaN(timeinVal)){
                 display.textContent = `Plese enter valid number!`
-                return
+                return;
             }
             if(timeinVal <=0 ){
                 display.textContent = `Plese enter second > 0`
-                return
+                return;
             }
-
-         const timer =    setInterval(()=>{
+         const timer = setInterval(()=>{
                 timeinVal--;
-                display.innerText = `Time remaning : ${timeinVal}`;
+                console.log(timeinVal)
+                display.innerText = `Time remaning : ${timeinVal} second`;
 
-                if(timeinVal <=0){
+                if(timeinVal <= 0){
                     clearInterval(timer)
                 }
-            },1 * 1000);
+            },1000);
         }
         startbtn.addEventListener("click" , starttimer)
     </script>
