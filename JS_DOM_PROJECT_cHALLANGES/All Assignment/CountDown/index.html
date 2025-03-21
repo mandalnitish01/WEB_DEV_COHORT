@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown Timer</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        p{
+            font-size: 90px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Countdown Timer</h1>
+        <div>
+            <input id="timeinput" type="text" placeholder="Enter time in second">
+            <button id="startbtn">Start Countdown</button>
+        </div>
+        <p id="countdownDisplay"></p>
+    </div>
+    <script>
+        const timeinput = document.getElementById("timeinput")
+        const startbtn = document.getElementById("startbtn")
+        const display = document.getElementById("countdownDisplay");
+
+        function starttimer(){
+            const timeinVal = parseInt(timeinput.value);
+            if(isNaN(timeinVal)){
+                display.textContent = `Plese enter valid number!`
+                return
+            }
+            if(timeinVal <=0 ){
+                display.textContent = `Plese enter second > 0`
+                return
+            }
+
+         const timer =    setInterval(()=>{
+                timeinVal--;
+                display.innerText = `Time remaning : ${timeinVal}`;
+
+                if(timeinVal <=0){
+                    clearInterval(timer)
+                }
+            },1 * 1000);
+        }
+        startbtn.addEventListener("click" , starttimer)
+    </script>
+</body>
+</html>
