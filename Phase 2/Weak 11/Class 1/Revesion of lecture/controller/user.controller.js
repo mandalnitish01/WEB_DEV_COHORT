@@ -130,6 +130,8 @@ await user.save();
 
 }
 
+
+// just for checking 
 // //response route url
 // const login = (req,res)=>{
 //     res.send("Login successfull!")
