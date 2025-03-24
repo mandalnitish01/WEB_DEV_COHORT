@@ -1,0 +1,129 @@
+import User from '../model/UserModel.js'
+import crypto from 'crypto'
+import nodemailer from 'nodemailer'
+
+const registerUser = async (req, res) => {
+  // algorithm
+
+  // send success status to user
+  // send error
+
+  // get data from user
+  const { name, email, password } = req.body;
+
+
+
+  // validate the data
+  //check the condition if any of the field is empty then return the error message
+  if (!name || !email || !password) {
+    return res.status(400).json({
+      msg: "All fields are required!",
+    });
+  }
+  //check the condition if password is less than 6 characters or does not contain at least one lowercase letter, one uppercase letter, one number and one special character then return the error message
+  if (
+    password.length < 6 ||
+    !/[a-z]/.test(password) || // Check for at least one lowercase letter
+    !/[A-Z]/.test(password) || // Check for at least one uppercase letter
+    !/[0-9]/.test(password) || // Check for at least one digit
+    !/[!@#$%^&*(),.?":{}|<>]/.test(password) // At least one special character
+  ) {
+    return res.status(400).json({
+      msg: "Password should be at least 6 characters long and include at least 1 lowercase letter, 1 uppercase letter, 1 number and at least 1 special charecter",
+    });
+  }
+  //check the condition if email does not contain '@' symbol then return the error message
+  // if(!/@/.test(email)){
+  //     return res.status(400).json({
+  //         msg: "Invalid email address"
+  //     });
+  // }
+  if (!email.includes("@")) {
+    return res.status(400).json({
+      msg: "Invalid email! Email must contain '@' symbol.",
+    });
+  }
+
+
+
+  // check if user already exists
+
+try{
+    const existingUser = await User.findOne({ email });
+
+    if(existingUser){
+        return res.status(400).json({
+            messege : "User already exists"
+        })
+    }
+
+
+
+     // create a user in DB
+    const user = await User.create({
+        name,
+        email,
+        password
+    })
+    console.log(user)
+//check if user not registered in db any how
+    if(!user){
+        return res.status(400).json({
+            msg: "User not registered"
+        }) 
+    }
+
+
+
+      // create a verification token
+        const token  = crypto.randomBytes(32).toString('hex')
+        console.log(token)
+        user.verificationToken  = token;
+          // save the token in DB
+        await user.save(); 
+
+          // send  email 
+
+          const transporter = nodemailer.createTransport({
+            host: process.env.MAILTRAP_HOST,
+            port: process.env.MAILTRAP_PORT,
+            secure: false, // true for port 465, false for other ports
+            auth: {
+              user: process.env.MAILTRAP_USERNAME,
+              pass: process.env.MAILTRAP_PASSWORD,
+            },
+          });
+
+
+          const mailOptions = {
+            from: process.env.MAILTRAP_SENDEREMAIL, // sender address
+            to: user.email, // list of receivers
+            subject: "verify your email", // Subject line
+            text: `Click on the link to verify your email 
+            ${process.env.BASE_URL}/api/v1/user/verify/${token}`, // plain text body
+          };
+
+          await transporter.sendMail(mailOptions)
+
+          res.status(201).json({
+                msg: "User registered successfully, Please verify your email",
+                success: true
+          })
+          
+
+
+}
+
+
+catch(error){
+    return res.status(400).json({
+        msg: "Internal server error",
+        success: false,
+        error
+    })
+
+}
+
+};
+
+export { registerUser };
