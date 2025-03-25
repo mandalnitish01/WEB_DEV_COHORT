@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+  </head>
+  <body>
+    <div>
+      <h1>Simple Calculator</h1>
+      <input type="text" id="FirstValue" />
+      <input type="text" id="SecondValue" />
+      <div>
+        <button onclick="calculate()">+</button>
+        <button onclick="calculate()">-</button>
+        <button onclick="calculate()">*</button>
+        <button onclick="calculate()">/</button>
+      </div>
+
+      <p id="result">Result: 0</p>
+    </div>
+
+    <script>
+      const FirstValue = document.getElementById("FirstValue");
+      const SecondValue = document.getElementById("SecondValue");
+      const result = document.getElementById("result");
+
+      function calculate(operator) {
+        const firstValue = parent(FirstValue.value);
+        const SecondValue = parent(SecondValue.value);
+
+        if(isNaN(firstValue) || isNaN(SecondValue)){
+          result.innerText = "Please enter a valid number";
+          return;
+        }
+
+        switch (operator) {
+          case "+":
+            {
+                console.log(firstValue + SecondValue);
+                result.innerText = `Result: ${firstValue + SecondValue}`; 
+            }
+            break;
+          case "-":
+            {
+                result.innerText = `Result: ${firstValue - SecondValue}`;
+            }
+            break;
+          case "*":
+            {
+                result.innerText = `Result: ${firstValue * SecondValue}`;
+            }
+            break;
+          case "/":
+            {
+                result.innerText = `Result: ${firstValue / SecondValue}`;
+            }
+            break;
+            default:
+                {
+                    result.innerText = "Invalid Operator";
+        }
+      }
+    }
+    </script>
+  </body>
+</html>
