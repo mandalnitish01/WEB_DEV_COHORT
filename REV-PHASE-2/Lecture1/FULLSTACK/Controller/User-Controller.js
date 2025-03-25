@@ -2,6 +2,8 @@ import User from '../model/UserModel.js'
 import crypto from 'crypto'
 import nodemailer from 'nodemailer'
 
+
+//register user
 const registerUser = async (req, res) => {
   // algorithm
 
@@ -94,24 +96,33 @@ try{
             },
           });
 
-
           const mailOptions = {
             from: process.env.MAILTRAP_SENDEREMAIL, // sender address
             to: user.email, // list of receivers
             subject: "verify your email", // Subject line
             text: `Click on the link to verify your email 
-            ${process.env.BASE_URL}/api/v1/user/verify/${token}`, // plain text body
+            ${process.env.BASE_URL}/api/v1/user/verify/${token}`, // plain text body,
+
+            html: `<p>Click on the link below to verify your email:</p>
+       <a href="${process.env.BASE_URL}/api/v1/user/verify/${token}" target="_blank">
+       Verify Email</a>` // HTML body
+
           };
 
-          await transporter.sendMail(mailOptions)
-
+          // await transporter.sendMail(mailOptions)
+          await transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+              console.error("Error sending email: ", err);
+              return res.status(500).json({ msg: "Failed to send verification email", error: err });
+            }
+            console.log("Email sent: ", info.response);
+          });
+          
+``
           res.status(201).json({
                 msg: "User registered successfully, Please verify your email",
                 success: true
           })
-          
-
-
 }
 
 
@@ -126,4 +137,48 @@ catch(error){
 
 };
 
-export { registerUser };
+//verify user 
+
+// ALgo 
+
+
+
+
+
+
+//return response
+
+const verifyUser = async(req,res) =>{
+  // get token from url
+  const {token} = req.params;
+//validate
+  if(!token){
+    return res.status(400).json({
+      msg: "Invalid token"
+    })
+  }
+//find user based on token
+   const user = await User.findOne({verificationToken: token})
+//if user not founmd return error
+   if(!user){
+    return res.status(400).json({
+      msg: "User not found!"
+    })
+  }
+
+// set verified fields to true 
+user.isverified = true;
+//remove varification token
+user.verificationToken = undefined;
+//save the details
+await user.save();
+
+// ✅ Send response to the client
+res.status(200).json({
+  msg: "Email verified successfully! You can now log in.",
+  success: true,
+});
+
+}
+
+export { registerUser , verifyUser};
