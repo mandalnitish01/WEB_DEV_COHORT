@@ -3,6 +3,8 @@ import crypto from "crypto";
 import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+
+
 //register user
 const registerUser = async (req, res) => {
   // algorithm
@@ -95,9 +97,9 @@ const registerUser = async (req, res) => {
       text: `Click on the link to verify your email 
             ${process.env.BASE_URL}/api/v1/user/verify/${token}`, // plain text body,
 
-      html: `<p>Click on the link below to verify your email:</p>
-       <a href="${process.env.BASE_URL}/api/v1/user/verify/${token}" target="_blank">
-       Verify Email</a>`, // HTML body
+      // html: `<p>Click on the link below to verify your email:</p>
+      //  <a href="${process.env.BASE_URL}/api/v1/user/verify/${token}" target="_blank">
+      //  Verify Email</a>`, // HTML body
     };
 
     // await transporter.sendMail(mailOptions)
@@ -128,7 +130,7 @@ const registerUser = async (req, res) => {
 //verify user
 const verifyUser = async (req, res) => {
   // get token from url
-  const { token } = req.params;
+  const { token } = req.params; //params used for get data from url
   //validate
   if (!token) {
     return res.status(400).json({
@@ -159,35 +161,50 @@ const verifyUser = async (req, res) => {
 };
 
 //login user
-const login = async (req, res) => {
-  const { email, password } = req.body;
+const loginUser = async (req, res) => {
+  //get email and password
+  const { email, password } = req.body; //body used for get data from body
+  //chekc if email and password is empty
   if (!email || !password) {
+    console.log("email or paddword are not correct")
     return res.status(400).json({
       msg: "All fields are required!",
     });
   }
 
-  try {
-    const user = await User.findOne({ email });
 
+
+  try {
+    //check user email in db
+    const user = await User.findOne({ email });
+//if not exist return error
     if (!user) {
       return res.status(400).json({
         msg: "Invalid email or password!",
       });
     }
-
-    const isMatch = bcrypt.compare(password, user.password);
+//if email is write the control reach here and check the password with the help of bcrypt compare method
+    const isMatch = await bcrypt.compare(password, user.password);
     console.log(isMatch);
+    // if password is wrong then return error
     if (!isMatch) {
       return res.status(400).json({
         msg: "Invalid email or password!",
       });
     }
 
+    //and check another condition thata user is verified or not
+    if (!user.isverified) {
+      return res.status(400).json({
+        msg: "Please verify your email to login",
+      });
+    }
+
+    //if user is verified then create a token with the help of jwt.sign method
     const token =   jwt.sign(
       { id: user._id },
        process.env.JWT_SECRET, 
-       { expiresIn: "1h" }
+       { expiresIn: process.env.JWT_EXPIRY }
       )
       const cookieoption ={
         httpOnly: true,
@@ -219,4 +236,50 @@ const login = async (req, res) => {
   }
 };
 
-export { registerUser, verifyUser };
+// getMe homepage 
+
+const getMe = (req,res) =>{
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
+//logout user
+const logoutUser = (req,res) =>{
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
+//password reset 
+const resetPassword = (req,res) =>{
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
+//password forgot 
+const forgotPassword = (req,res) =>{
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
+
+
+//user profile route
+//logout route
+//forgot password route
+//reset password route
+//update password route
+//update user details route
+//delete user route
+export { registerUser , verifyUser , loginUser , getMe , logoutUser , resetPassword , forgotPassword};

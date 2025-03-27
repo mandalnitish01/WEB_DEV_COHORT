@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment-4</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+        <!-- //input search  -->
+      <div>
+        <input id="input-text" type="text" />
+        <button id="searchbtn">search</button>
+      </div>
+
+      <div class="sort-container">
+        <select id="sort">
+          <option value="title-asc">Title (A-Z)</option>
+          <option value="title-desc">Title (Z-A)</option>
+          <option value="date-asc">Date (Oldest)</option>
+          <option value="date-desc">Date (Newest)</option>
+        </select>
+      </div>
+
+      <!-- //for view toggle -->
+      <div class="view-toggle">
+        <button class="grid-view"><i class="fas fa-th">grid</i></button>
+        <button class="list-view"><i class="fas fa-list">list </i></button>
+      </div>
+    </header>
+    <div id="result">
+        <!-- //all result will be shown here -->
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
