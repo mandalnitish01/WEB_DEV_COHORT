@@ -3,14 +3,11 @@ import crypto from "crypto";
 import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+// import express from "express";
 
 
 //register user
 const registerUser = async (req, res) => {
-  // algorithm
-
-  // send success status to user
-  // send error
 
   // get data from user
   const { name, email, password } = req.body;
@@ -47,7 +44,6 @@ const registerUser = async (req, res) => {
   }
 
   // check if user already exists
-
   try {
     const existingUser = await User.findOne({ email });
 
@@ -64,6 +60,7 @@ const registerUser = async (req, res) => {
       password,
     });
     console.log(user);
+
     //check if user not registered in db any how
     if (!user) {
       return res.status(400).json({
@@ -103,6 +100,7 @@ const registerUser = async (req, res) => {
     };
 
     // await transporter.sendMail(mailOptions)
+    //send mail
     await transporter.sendMail(mailOptions, (err, info) => {
       if (err) {
         console.error("Error sending email: ", err);
@@ -113,7 +111,7 @@ const registerUser = async (req, res) => {
       console.log("Email sent: ", info.response);
     });
 
-    ``;
+
     res.status(201).json({
       msg: "User registered successfully, Please verify your email",
       success: true,
@@ -131,6 +129,7 @@ const registerUser = async (req, res) => {
 const verifyUser = async (req, res) => {
   // get token from url
   const { token } = req.params; //params used for get data from url
+  console.log(token)
   //validate
   if (!token) {
     return res.status(400).json({
@@ -162,18 +161,20 @@ const verifyUser = async (req, res) => {
 
 //login user
 const loginUser = async (req, res) => {
+  console.log("kuch too kro bhai")
+
   //get email and password
-  const { email, password } = req.body; //body used for get data from body
+  const { email, password } = req.body; //body used for get data from body and params used for get data from url
+  console.log(email, password);
   //chekc if email and password is empty
   if (!email || !password) {
-    console.log("email or paddword are not correct")
+    console.log("email or password are not correct")
     return res.status(400).json({
       msg: "All fields are required!",
     });
   }
 
-
-
+  
   try {
     //check user email in db
     const user = await User.findOne({ email });
@@ -185,7 +186,8 @@ const loginUser = async (req, res) => {
     }
 //if email is write the control reach here and check the password with the help of bcrypt compare method
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log(isMatch);
+    console.log(`Both password is `, password, user.password);
+    console.log(`Password matched the password is`,isMatch);
     // if password is wrong then return error
     if (!isMatch) {
       return res.status(400).json({
@@ -193,19 +195,20 @@ const loginUser = async (req, res) => {
       });
     }
 
-    //and check another condition thata user is verified or not
-    if (!user.isverified) {
-      return res.status(400).json({
-        msg: "Please verify your email to login",
-      });
-    }
+    //and check another condition that a user is verified or not
+    // if (!user.isverified) {
+    //   return res.status(400).json({
+    //     msg: "Please verify your email to login",
+    //   });
+    // }
 
     //if user is verified then create a token with the help of jwt.sign method
     const token =   jwt.sign(
-      { id: user._id },
+      { id: user._id , role: user.role },
        process.env.JWT_SECRET, 
        { expiresIn: process.env.JWT_EXPIRY }
-      )
+      );
+console.log(token)
       const cookieoption ={
         httpOnly: true,
         secure:true,
@@ -229,51 +232,51 @@ const loginUser = async (req, res) => {
   
   catch (error) {
     return res.status(400).json({
-      msg: "Internal server error",
+      msg: "login failed",
       success: false,
       error,
     });
   }
 };
 
+
 // getMe homepage 
 
-const getMe = (req,res) =>{
-  try {
+// const getMe = (req,res) =>{
+//   try {
+//     console.log("Reachded ad profile level");
     
-  } catch (error) {
+//   } catch (error) {
     
-  }
-}
+//   }
+// }
 
-//logout user
-const logoutUser = (req,res) =>{
-  try {
+// //logout user
+// const logoutUser = (req,res) =>{
+//   try {
     
-  } catch (error) {
+//   } catch (error) {
     
-  }
-}
+//   }
+// }
 
-//password reset 
-const resetPassword = (req,res) =>{
-  try {
+// //password reset 
+// const resetPassword = (req,res) =>{
+//   try {
     
-  } catch (error) {
+//   } catch (error) {
     
-  }
-}
+//   }
+// }
 
-//password forgot 
-const forgotPassword = (req,res) =>{
-  try {
+// //password forgot 
+// const forgotPassword = (req,res) =>{
+//   try {
     
-  } catch (error) {
+//   } catch (error) {
     
-  }
-}
-
-
+//   }
+// }
 
 //user profile route
 //logout route
@@ -282,4 +285,5 @@ const forgotPassword = (req,res) =>{
 //update password route
 //update user details route
 //delete user route
-export { registerUser , verifyUser , loginUser , getMe , logoutUser , resetPassword , forgotPassword};
+export { registerUser , verifyUser , loginUser};
+// , getMe , logoutUser , resetPassword , forgotPassword

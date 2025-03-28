@@ -117,7 +117,8 @@ const verifyUser = async (req, res) => {
       message: "User verified successfully",
       success: true,
     });
-  } catch (error) {
+  }
+   catch (error) {
     res.status(400).json({
       message: "User not verified",
       error,

@@ -23,7 +23,7 @@ app.use(cookieParser());
 // app.use(express.static("public"));
 
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 db();
 
@@ -31,3 +31,4 @@ app.use("/api/v1/user" , userRoute)
 app.listen(process.env.PORT , ()=>{
     console.log(`App is listening on port ${port}`);
 })
+
