@@ -79,7 +79,6 @@ return res.status(200).json({
   }
 };
 
-
 //verification controller
 const verify = async (req,res)=>{
     try {
