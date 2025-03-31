@@ -24,6 +24,10 @@ app.use(cookieParser());
 
 
 const port = process.env.PORT || 4000;
+// crate a route 
+app.get('/', (req,res)=>{
+    res.send("hello ji")
+})
 
 db();
 

@@ -4,10 +4,9 @@ import {registerUser , verifyUser , loginUser} from '../Controller/User-Controll
 // import  isLoggedIn  from '../middleware/auth-middleware.js';
 // import { isLoggedIn } from '../middleware/auth-middleware.js';
 const Router = express.Router();
-
 Router.post('/register', registerUser)
 Router.get('/verify/:token' , verifyUser)
-Router.post('/login' , loginUser)
+
 // Router.get('/me' , isLoggedIn , getMe)
 // Router.post('/resetpassword' , resetPassword)
 // Router.get('/logout' , logoutUser)
