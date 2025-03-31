@@ -31,7 +31,6 @@ const port = process.env.PORT || 8080; //localhost port
 
 //import all routes
 
-
 db(); //connecting with databas
 
 //import all routes
