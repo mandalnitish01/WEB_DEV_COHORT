@@ -1,11 +1,13 @@
 import User from "../models/user.model.js";
 import crypto from "crypto";
 import nodemailer from "nodemailer";
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
-dotenv.config()
+dotenv.config();
 
-const registeruser = async (req, res) => {
+const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -56,67 +58,159 @@ const registeruser = async (req, res) => {
     }
 
     const token = crypto.randomBytes(32).toString("hex");
-    console.log(token)
+    console.log(token);
     newuser.verificationtocken = token;
     await newuser.save();
-   
 
     //send email to user
     // Looking to send emails in production? Check out our Email API/SMTP product!
     const transporter = nodemailer.createTransport({
       host: process.env.MAILTRAP_HOST,
       port: process.env.MAILTRAP_PORT,
-      secure:false,
+      secure: false, //true for port 465 baaki false
       auth: {
         user: process.env.MAILTRAP_USERNAME,
         pass: process.env.MAILTRAP_PASSWORD,
       },
     });
-    console.log("email first phase")
+    console.log("transporter", transporter);
 
     //create mail options
     const mailOptions = {
-      from: process.env.MAILTRAP_USERNAME, // sender address
+      from: process.env.MAILTRAP_SENDEREMAIL, // sender address
       to: newuser.email, // list of receivers
       subject: "Plese verify your email", // Subject line
       text: `Click on the link to verify your email 
-            ${process.env.BASE_URL}/api/v1/user/verify/${token}`
-    //   html: `<p>Click on the link below to verify your email:</p>
-    //    <a href="${process.env.BASE_URL}/api/v1/user/verify/${token}" target="_blank">
-    //    Verify Email</a>`, // HTML body
+            ${process.env.BASE_URL}/api/v1/user/verify/${token}`,
+      //   html: `<p>Click on the link below to verify your email:</p>
+      //    <a href="${process.env.BASE_URL}/api/v1/user/verify/${token}" target="_blank">
+      //    Verify Email</a>`, // HTML body
     };
-    console.log("mail loaded!")
+    console.log("mail loaded!", mailOptions);
 
     await transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error("Email sending error:", error);
-    
-            // Ensure response is sent only once
-            if (!res.headersSent) {
-                return res.status(500).json({ error: "Email sending failed" });
-            }
-        } else {
-            console.log("Email sent:", info.response);
-    
-            // Ensure response is sent only once
-            if (!res.headersSent) {
-                return res.status(200).json({ message: "Email sent successfully" });
-            }
+      if (error) {
+        console.error("Email sending error:", error);
+
+        // Ensure response is sent only once
+        if (!res.headersSent) {
+          return res.status(500).json({ error: "Email sending failed" });
         }
+      } else {
+        console.log("Email sent:", info.response);
+
+        // Ensure response is sent only once
+        if (!res.headersSent) {
+          return res.status(200).json({ message: "Email sent successfully" });
+        }
+      }
     });
-    
 
     res.status(201).json({
-        messege:"User registered successfully!",
-        success : true
-    })
+      messege: "User registered successfully!",
+      success: true,
+    });
   } catch (error) {
     res.status(400).json({
-        messege:"User not registered!",
-        success : false,
-        error
-    })
+      messege: "User not registered!",
+      success: false,
+      error,
+    });
   }
 };
 
-export { registeruser };
+const verifyUser = async (req, res) => {
+  const { token } = req.params;
+  console.log(token);
+
+  if (!token) {
+    res.status(500).json({
+      msg: "Invalid token",
+    });
+  }
+
+  const user = await User.findOne({ verificationtocken: token });
+  if (!user) {
+    res.status(500).json({
+      msg: "User Not found!",
+    });
+  }
+  user.isverified = true;
+  user.verificationtocken = undefined;
+  await user.save();
+
+  return res.status(200).json({
+    msg: "User verification successfully, You can login now.",
+  });
+};
+
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({
+      msg: "All fields are required",
+    });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+    console.log(user);
+
+    if (!user) {
+      return res.status(400).json({
+        msg: "Invalid email or password!",
+      });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log(isMatch);
+
+    if (!isMatch) {
+      return res.status(400).json({
+        msg: "Invalid email or password!",
+      });
+    }
+
+    if (!user.isverified) {
+      res.status(400).json({
+        msg: "User Not veriyfied",
+      });
+    }
+
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRATE,
+      {
+        expiresIn: "24h",
+      }
+    );
+    // console.log(token)
+
+    const cookieOptions = {
+      httpOnly: true,
+      secure: true,
+      maxAge: 24 * 60 * 60 * 1000,
+    }; 
+    // console.log(cookieOptions)
+    res.cookie("token", token, cookieOptions);
+
+    res.status(200).json({
+      success: true,
+      message: "Login successfully!",
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        role: user.role,
+      },
+    });
+  } 
+  catch (error) {
+    res.status(400).json({
+      msg: "Login failed!"
+    });
+  }
+};
+
+export { registerUser, verifyUser, loginUser };
