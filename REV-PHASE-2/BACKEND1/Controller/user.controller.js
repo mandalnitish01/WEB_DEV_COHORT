@@ -178,6 +178,7 @@ const loginUser = async (req, res) => {
       });
     }
 
+    //creat jwt 
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRATE,
@@ -195,6 +196,7 @@ const loginUser = async (req, res) => {
     // console.log(cookieOptions)
     res.cookie("token", token, cookieOptions);
 
+    console.log("user login successfull!")
     res.status(200).json({
       success: true,
       message: "Login successfully!",
@@ -213,4 +215,47 @@ const loginUser = async (req, res) => {
   }
 };
 
-export { registerUser, verifyUser, loginUser };
+const getMe = async (req,res)=>{
+  try {
+    
+   const user = await User.findById(req.user.id).select('-password')
+   if(!user){
+    return res.status(400).json({
+      msg:"User Not found!",
+      success:false
+    })
+   }
+   res.status(200).json({
+    success:true,
+    user
+   })
+
+  } catch (error) {
+    return res.status(400).json({
+      msg:"User not found!",
+      success:false
+    })
+  }
+
+}
+
+const logoutUser = async (req,res)=>{
+  try {
+    
+    res.cookie("token" , "",{}) //{}- in this bracket you can send cookie
+    res.status(200).json({
+      success:true,
+      msg:"Logged out Successfully!"
+    })
+   
+
+  } catch (error) {
+    return res.status(400).json({
+      msg:"something error",
+      success:false
+    })
+  }
+
+}
+
+export { registerUser, verifyUser, loginUser , getMe ,logoutUser};
