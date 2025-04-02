@@ -11,6 +11,7 @@ const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
+    console.log("in register phase if user name email and password not provided then show all  fields are required")
     res.status(400).json({
       msg: "All felds are required!",
     });
@@ -34,11 +35,12 @@ const registerUser = async (req, res) => {
       msg: "Invalid email! Email must contain '@' symbol.",
     });
   }
-  console.log(email, password, name); //if we not provide the filed and try to print the it return undefined
+  console.log("registered email : ",email,"registered password :", password,"registered name :", name); //if we not provide the filed and try to print the it return undefined
 
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
+      console.log("in register phase if user already exist error")
       return res.status(400).json({
         mesege: "User already exists",
       });
@@ -49,16 +51,17 @@ const registerUser = async (req, res) => {
       email,
       password,
     });
-    console.log(newuser);
+    console.log("Details of new added user : ",newuser);
 
     if (!newuser) {
+      console.log("if user not registered error")
       return res.status(400).json({
         messege: "User not registered!",
       });
     }
 
-    const token = crypto.randomBytes(32).toString("hex");
-    console.log(token);
+    const token = crypto.randomBytes(32).toString("hex");  //create a token
+    console.log("Registered token : ",token);
     newuser.verificationtocken = token;
     await newuser.save();
 
@@ -121,7 +124,7 @@ const registerUser = async (req, res) => {
 
 const verifyUser = async (req, res) => {
   const { token } = req.params;
-  console.log(token);
+  console.log("Get token from url for verify the user : ",token);
 
   if (!token) {
     res.status(500).json({
@@ -155,7 +158,7 @@ const loginUser = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    console.log(user);
+    console.log("Login user email : ",user);
 
     if (!user) {
       return res.status(400).json({
@@ -164,7 +167,7 @@ const loginUser = async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log(isMatch);
+    console.log("match the password : ",isMatch);
 
     if (!isMatch) {
       return res.status(400).json({
@@ -194,9 +197,11 @@ const loginUser = async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000,
     }; 
     // console.log(cookieOptions)
-    res.cookie("token", token, cookieOptions);
+    console.log("token code", token, "Cookie details", cookieOptions)
+    res.cookie(token, cookieOptions);
 
     console.log("user login successfull!")
+    
     res.status(200).json({
       success: true,
       message: "Login successfully!",
@@ -231,7 +236,7 @@ const getMe = async (req,res)=>{
    })
 
   } catch (error) {
-    return res.status(400).json({
+     res.status(400).json({ //not include return statement
       msg:"User not found!",
       success:false
     })
