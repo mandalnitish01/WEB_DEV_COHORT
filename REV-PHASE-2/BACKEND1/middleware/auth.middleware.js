@@ -1,14 +1,14 @@
 import jwt from "jsonwebtoken";
-import dotenv  from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
- const isLoggedIn = async (req, res, next) => {
+const isLoggedIn = async (req, res, next) => {
   try {
-
-    console.log("cookie/token :- ",req.cookies);
+    console.log("cookie/token :- ", req.cookies);
     const token = await req.cookies?.token;
 
     console.log("Token found : ", token ? "YES" : "NO");
+    console.log("token not found error!");
 
     if (!token) {
       return res.status(400).json({
@@ -16,19 +16,17 @@ dotenv.config();
       });
     }
 
-    const decodeddata = jwt.verify(token,process.env.JWT_SECRATE);
-    console.log(decodeddata)
+    const decodeddata = jwt.verify(token, process.env.JWT_SECRATE);
+    console.log(decodeddata);
     req.user = decodeddata;
     next();
-  } 
-  catch (error) {
-    console.log("auth middleware failure")
+  } catch (error) {
+    console.log("auth middleware failure");
     res.status(500).json({
-        msg:"Internal Server error!",
-        secure:false
-    })
-
+      msg: "Internal Server error!",
+      secure: false,
+    });
   }
   next();
 };
-export {isLoggedIn}
+export { isLoggedIn };

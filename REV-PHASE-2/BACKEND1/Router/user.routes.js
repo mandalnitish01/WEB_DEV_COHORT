@@ -7,7 +7,7 @@ router.post('/register' , registerUser )
 router.get('/verify/:token' , verifyUser) //verify ke pass jo variable ka name hoga wo hmm : isske baad rakhenge
 router.post('/login', loginUser)
 router.get('/profile',isLoggedIn, getMe)
-router.get('/logout',isLoggedIn, logoutUser)
+// router.get('/logout',isLoggedIn, logoutUser)
 
 export default router;
 
