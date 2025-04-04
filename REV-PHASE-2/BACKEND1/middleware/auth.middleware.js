@@ -11,9 +11,10 @@ const isLoggedIn = async (req, res, next) => {
     console.log("token not found error!");
 
     if (!token) {
-      return res.status(400).json({
+      return res.status(401).json({
+        success: false,
         msg: "Invalid User",
-      });
+      }); 
     }
 
     const decodeddata = jwt.verify(token, process.env.JWT_SECRATE);

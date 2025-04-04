@@ -46,14 +46,14 @@ const registerUser = async (req, res) => {
       });
     }
 
-    const newuser = await User.create({
+    const user = await User.create({
       name,
       email,
       password,
     });
-    console.log("Details of new added user : ",newuser);
+    console.log("Details of new added user : ",user);
 
-    if (!newuser) {
+    if (!user) {
       console.log("if user not registered error")
       return res.status(400).json({
         messege: "User not registered!",
@@ -62,8 +62,8 @@ const registerUser = async (req, res) => {
 
     const token = crypto.randomBytes(32).toString("hex");  //create a token
     console.log("Registered token : ",token);
-    newuser.verificationtocken = token;
-    await newuser.save();
+    user.verificationtocken = token;
+    await user.save();
 
     //send email to user
     // Looking to send emails in production? Check out our Email API/SMTP product!
@@ -81,7 +81,7 @@ const registerUser = async (req, res) => {
     //create mail options
     const mailOptions = {
       from: process.env.MAILTRAP_SENDEREMAIL, // sender address
-      to: newuser.email, // list of receivers
+      to: user.email, // list of receivers
       subject: "Plese verify your email", // Subject line
       text: `Click on the link to verify your email 
             ${process.env.BASE_URL}/api/v1/user/verify/${token}`,
@@ -166,7 +166,7 @@ const loginUser = async (req, res) => {
       });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password); //it return true and false 
     console.log("match the password : ",isMatch);
 
     if (!isMatch) {
@@ -189,16 +189,17 @@ const loginUser = async (req, res) => {
         expiresIn: "24h",
       }
     );
-    // console.log(token)
+    console.log("JWT token : ",token)
 
     const cookieOptions = {
       httpOnly: true,
       secure: true,
       maxAge: 24 * 60 * 60 * 1000,
     }; 
-    // console.log(cookieOptions)
+    console.log("Cookie option returned value :",cookieOptions)
     console.log("token code", token, "Cookie details", cookieOptions)
-    res.cookie(token, cookieOptions);
+    // Set the cookie with the token
+    res.cookie("token",token, cookieOptions);
 
     console.log("user login successfull!")
     
