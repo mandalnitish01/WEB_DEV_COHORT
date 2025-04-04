@@ -11,7 +11,9 @@ const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    console.log("in register phase if user name email and password not provided then show all  fields are required")
+    console.log(
+      "in register phase if user name email and password not provided then show all  fields are required"
+    );
     res.status(400).json({
       msg: "All felds are required!",
     });
@@ -35,12 +37,19 @@ const registerUser = async (req, res) => {
       msg: "Invalid email! Email must contain '@' symbol.",
     });
   }
-  console.log("registered email : ",email,"registered password :", password,"registered name :", name); //if we not provide the filed and try to print the it return undefined
+  console.log(
+    "registered email : ",
+    email,
+    "registered password :",
+    password,
+    "registered name :",
+    name
+  ); //if we not provide the filed and try to print the it return undefined
 
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      console.log("in register phase if user already exist error")
+      console.log("in register phase if user already exist error");
       return res.status(400).json({
         mesege: "User already exists",
       });
@@ -51,17 +60,17 @@ const registerUser = async (req, res) => {
       email,
       password,
     });
-    console.log("Details of new added user : ",user);
+    console.log("Details of new added user : ", user);
 
     if (!user) {
-      console.log("if user not registered error")
+      console.log("if user not registered error");
       return res.status(400).json({
         messege: "User not registered!",
       });
     }
 
-    const token = crypto.randomBytes(32).toString("hex");  //create a token
-    console.log("Registered token : ",token);
+    const token = crypto.randomBytes(32).toString("hex"); //create a token
+    console.log("Registered token : ", token);
     user.verificationtocken = token;
     await user.save();
 
@@ -124,7 +133,7 @@ const registerUser = async (req, res) => {
 
 const verifyUser = async (req, res) => {
   const { token } = req.params;
-  console.log("Get token from url for verify the user : ",token);
+  console.log("Get token from url for verify the user : ", token);
 
   if (!token) {
     res.status(500).json({
@@ -158,7 +167,7 @@ const loginUser = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    console.log("Login user email : ",user);
+    console.log("Login user email : ", user);
 
     if (!user) {
       return res.status(400).json({
@@ -166,8 +175,8 @@ const loginUser = async (req, res) => {
       });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password); //it return true and false 
-    console.log("match the password : ",isMatch);
+    const isMatch = await bcrypt.compare(password, user.password); //it return true and false
+    console.log("match the password : ", isMatch);
 
     if (!isMatch) {
       return res.status(400).json({
@@ -181,28 +190,28 @@ const loginUser = async (req, res) => {
       });
     }
 
-    //creat jwt 
+    //creat jwt
     const token = jwt.sign(
       { id: user._id, role: user.role },
-      process.env.JWT_SECRATE,
+      process.env.JWT_SECRET,
       {
         expiresIn: "24h",
       }
     );
-    console.log("JWT token : ",token)
+    console.log("JWT token : ", token);
 
     const cookieOptions = {
       httpOnly: true,
       secure: true,
       maxAge: 24 * 60 * 60 * 1000,
-    }; 
-    console.log("Cookie option returned value :",cookieOptions)
-    console.log("token code", token, "Cookie details", cookieOptions)
+    };
+    console.log("Cookie option returned value :", cookieOptions);
+    console.log("token code", token, "Cookie details", cookieOptions);
     // Set the cookie with the token
-    res.cookie("token",token, cookieOptions);
+    res.cookie("token", token, cookieOptions);
 
-    console.log("user login successfull!")
-    
+    console.log("user login successfull!");
+
     res.status(200).json({
       success: true,
       message: "Login successfully!",
@@ -213,55 +222,56 @@ const loginUser = async (req, res) => {
         role: user.role,
       },
     });
-  } 
-  catch (error) {
+  } catch (error) {
     res.status(400).json({
-      msg: "Login failed!"
+      msg: "Login failed!",
     });
   }
 };
 
-const getMe = async (req,res)=>{
+const getMe = async (req, res) => {
   try {
-    
-   const user = await User.findById(req.user.id).select('-password')
-   if(!user){
-    return res.status(400).json({
-      msg:"User Not found!",
-      success:false
-    })
-   }
-   res.status(200).json({
-    success:true,
-    user
-   })
-
-  } catch (error) {
-     res.status(400).json({ //not include return statement
-      msg:"User not found!",
-      success:false
-    })
-  }
-
-}
-
-const logoutUser = async (req,res)=>{
-  try {
-    
-    res.cookie("token" , "",{}) //{}- in this bracket you can send cookie
+    const user = await User.findById(req.user.id).select("-password");
+    if (!user) {
+      return res.status(400).json({
+        msg: "User Not found!",
+        success: false,
+      });
+    }
     res.status(200).json({
-      success:true,
-      msg:"Logged out Successfully!"
-    })
-   
+      msg: "User details",
+      success: true,
+      user,
+    });
+  } catch (error) {
+    res.status(400).json({
+      //not include return statement
+      msg: "User not found!",
+      success: false,
+    });
+  }
+};
 
+const logoutUser = async (req, res) => {
+  try {
+    res.cookie("token", "", {
+      httpOnly: true,
+      secure: true,
+      expires: new Date(Date.now()),
+      sameSite: "strict",
+    }); //{}- in this bracket you can send cookie options
+    console.log("cookie cleared");
+
+    res.status(200).json({
+      success: true,
+      msg: "Logged out Successfully!",
+    });
   } catch (error) {
     return res.status(400).json({
-      msg:"something error",
-      success:false
-    })
+      msg: "something error",
+      success: false,
+    });
   }
+};
 
-}
-
-export { registerUser, verifyUser, loginUser , getMe ,logoutUser};
+export { registerUser, verifyUser, loginUser, getMe, logoutUser };

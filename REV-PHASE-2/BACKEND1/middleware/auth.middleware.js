@@ -5,10 +5,10 @@ dotenv.config();
 const isLoggedIn = async (req, res, next) => {
   try {
     console.log("cookie/token :- ", req.cookies);
-    const token = await req.cookies?.token;
+    const token =  req.cookies?.token; //take token from cookies
 
+    console.log("token :- ", token);
     console.log("Token found : ", token ? "YES" : "NO");
-    console.log("token not found error!");
 
     if (!token) {
       return res.status(401).json({
@@ -17,9 +17,13 @@ const isLoggedIn = async (req, res, next) => {
       }); 
     }
 
-    const decodeddata = jwt.verify(token, process.env.JWT_SECRATE);
-    console.log(decodeddata);
+    const decodeddata = jwt.verify(token, process.env.JWT_SECRET);
+    console.log("decoded data : ",decodeddata);
+
     req.user = decodeddata;
+    console.log("decoded User ",req.user); //here is the proble it return undefined
+   
+   
     next();
   } catch (error) {
     console.log("auth middleware failure");
@@ -28,6 +32,5 @@ const isLoggedIn = async (req, res, next) => {
       secure: false,
     });
   }
-  next();
 };
 export { isLoggedIn };
