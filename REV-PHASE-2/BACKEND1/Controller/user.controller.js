@@ -258,7 +258,7 @@ const logoutUser = async (req, res) => {
       httpOnly: true,
       secure: true,
       expires: new Date(Date.now()),
-      sameSite: "strict",
+      // sameSite: "strict",
     }); //{}- in this bracket you can send cookie options
     console.log("cookie cleared");
 
