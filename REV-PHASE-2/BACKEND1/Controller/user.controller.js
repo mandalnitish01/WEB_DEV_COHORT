@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import crypto from "crypto";
-import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import sendVerificationEmail from "../utils/sendMail.utils.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -75,49 +75,15 @@ const registerUser = async (req, res) => {
     await user.save();
 
     //send email to user
-    // Looking to send emails in production? Check out our Email API/SMTP product!
-    const transporter = nodemailer.createTransport({
-      host: process.env.MAILTRAP_HOST,
-      port: process.env.MAILTRAP_PORT,
-      secure: false, //true for port 465 baaki false
-      auth: {
-        user: process.env.MAILTRAP_USERNAME,
-        pass: process.env.MAILTRAP_PASSWORD,
-      },
-    });
-    console.log("transporter", transporter);
-
-    //create mail options
-    const mailOptions = {
-      from: process.env.MAILTRAP_SENDEREMAIL, // sender address
-      to: user.email, // list of receivers
-      subject: "Plese verify your email", // Subject line
-      text: `Click on the link to verify your email 
-            ${process.env.BASE_URL}/api/v1/user/verify/${token}`,
-      //   html: `<p>Click on the link below to verify your email:</p>
-      //    <a href="${process.env.BASE_URL}/api/v1/user/verify/${token}" target="_blank">
-      //    Verify Email</a>`, // HTML body
-    };
-    console.log("mail loaded!", mailOptions);
-
-    await transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error("Email sending error:", error);
-
-        // Ensure response is sent only once
-        if (!res.headersSent) {
-          return res.status(500).json({ error: "Email sending failed" });
-        }
-      } else {
-        console.log("Email sent:", info.response);
-
-        // Ensure response is sent only once
-        if (!res.headersSent) {
-          return res.status(200).json({ message: "Email sent successfully" });
-        }
-      }
-    });
-
+    const isEmailSent = await sendVerificationEmail(user.email, token);
+    if (!isEmailSent) {
+      console.log("Email not sent to user");
+      return res.status(400).json({
+        msg: "Email not sent!",
+      });
+    }
+    console.log("Email sent successfully to user");
+  
     res.status(201).json({
       messege: "User registered successfully!",
       success: true,
