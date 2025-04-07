@@ -70,19 +70,25 @@ const registerUser = async (req, res) => {
     }
 
     const token = crypto.randomBytes(32).toString("hex"); //create a token
-    console.log("Registered token : ", token);
+    console.log("user verification token : ", user.verificationtocken);
+
+    // const tokenExpires = Date.now()+ 10 * 60 * 1000; //10 minutes
+    // console.log("Verification Token expires in : ", tokenExpires);
+
     user.verificationtocken = token;
+    // user.verificationExpirestocken = tokenExpires; //set the token to user
+
     await user.save();
 
     //send email to user
     const isEmailSent = await sendVerificationEmail(user.email, token);
-    if (!isEmailSent) {
-      console.log("Email not sent to user");
-      return res.status(400).json({
-        msg: "Email not sent!",
-      });
-    }
-    console.log("Email sent successfully to user");
+    // if (!isEmailSent) {
+    //   console.log("Email not sent to user");
+    //   return res.status(400).json({
+    //     msg: "Email not sent!",
+    //   });
+    // }
+    // console.log("Email sent successfully to user");
   
     res.status(201).json({
       messege: "User registered successfully!",
@@ -142,11 +148,13 @@ const loginUser = async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password); //it return true and false
+    // const isMatch = user.comparePassword(password);
     console.log("match the password : ", isMatch);
 
     if (!isMatch) {
       return res.status(400).json({
-        msg: "Invalid email or password!",
+        success: false,
+        msg: "Invalid email or password!"
       });
     }
 
@@ -156,32 +164,58 @@ const loginUser = async (req, res) => {
       });
     }
 
-    //creat jwt
-    const token = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "24h",
-      }
-    );
-    console.log("JWT token : ", token);
+    // //creat jwt token
+    // const token = jwt.sign(
+    //   { id: user._id, role: user.role }, //{id:user._id} is payload
+    //   process.env.JWT_SECRET, //secret key
+    //   {
+    //     expiresIn: "24h", //token will expire in 24 hours 
+    //   }
+    // );
+    // console.log("JWT token : ", token);
 
+    // create jwt refresh token and access token
+    const accessToken = jwt.sign(
+      //payload/id
+      {id: user._id, role: user.role},
+      //token secrate
+      process.env.JWTACCESS_SECRET,
+      //expiry 
+      { expiresIn: "24h" }, //token will expire in 24 hours
+    )
+
+    const refreshToken = jwt.sign(
+      //payload/id
+      {id: user._id, role: user.role},
+      //token secrate
+      process.env.JWTREFRESH_SECRET,
+      //expiry 
+      { expiresIn: "24h" }, //token will expire in 24 hours
+    )
+user.refreshToken = refreshToken;
+await user.save();
+    //set it to cookies
     const cookieOptions = {
-      httpOnly: true,
+      httpOnly: true, //prevent from XSS attacks
       secure: true,
-      maxAge: 24 * 60 * 60 * 1000,
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // res.cookie() expects expires to be a Date object, not a number.
     };
     console.log("Cookie option returned value :", cookieOptions);
-    console.log("token code", token, "Cookie details", cookieOptions);
+    // console.log("token code : ", token, "Cookie details :", cookieOptions); //this is for jwt token
+    console.log("token code : ", accessToken, "Cookie details :", cookieOptions);
+    console.log("token code : ", refreshToken, "Cookie details :", cookieOptions);
     // Set the cookie with the token
-    res.cookie("token", token, cookieOptions);
+    // res.cookie("token", token, cookieOptions); //this is for jwt token
+    res.cookie("accessToken", accessToken, cookieOptions);
+    res.cookie("refreshToken", refreshToken, cookieOptions);
 
     console.log("user login successfull!");
 
     res.status(200).json({
       success: true,
       message: "Login successfully!",
-      token,
+      // token, //for jwt token
+      refreshToken,
       user: {
         id: user._id,
         name: user.name,

@@ -17,12 +17,19 @@ const userschema = new mongoose.Schema(
     verificationtocken: {
       type: String,
     },
+    verificationExpirestocken: {
+      type: String,
+    },
     resetpasswordtocken: {
       type: String,
     },
     resetpasswordExpirestocken: {
       type: Date,
     },
+    refreshToken:{
+      type: String,
+      default: null,
+    }
   },
   { 
     Timestamp: true 
@@ -35,7 +42,8 @@ userschema.pre("save" , async function (next){
     this.password = await bcrypt.hash(this.password , 10)
   }
   next();
-})
+}) 
 const User = mongoose.model("User", userschema);
-
+// const instance = new User({ name: ‘John’, age: 30 }); //you can add schema data via this
+//instance.save(); // pre-save hook will be triggered
 export default User;
