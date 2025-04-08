@@ -1,4 +1,12 @@
 // Output guess questions
+//Topics covered :-
+                    // template literals 
+                    // optional chaining (?.)
+                    // turnary operator
+                    // higher order function
+                    //pure and impure functions
+                    //function currying
+
 
 //pure and impure functions
 
@@ -13,12 +21,10 @@ function calcCircleArea(radius) {
 //   console.log(`Circle area of radius ${radius} is ${area}`);
 
 
-// impure function 
-
-  // Global variable
-let counter = 0;
-
 // Impure function - increment the global counter
+ // Global variable
+ let counter = 0;
+
 function incrCounter() {
   counter++;
 }
