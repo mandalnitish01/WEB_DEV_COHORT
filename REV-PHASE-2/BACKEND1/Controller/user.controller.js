@@ -54,7 +54,6 @@ const registerUser = async (req, res) => {
         mesege: "User already exists",
       });
     }
-
     const user = await User.create({
       name,
       email,
@@ -89,7 +88,7 @@ const registerUser = async (req, res) => {
     //   });
     // }
     // console.log("Email sent successfully to user");
-  
+
     res.status(201).json({
       messege: "User registered successfully!",
       success: true,
@@ -154,7 +153,7 @@ const loginUser = async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({
         success: false,
-        msg: "Invalid email or password!"
+        msg: "Invalid email or password!",
       });
     }
 
@@ -169,7 +168,7 @@ const loginUser = async (req, res) => {
     //   { id: user._id, role: user.role }, //{id:user._id} is payload
     //   process.env.JWT_SECRET, //secret key
     //   {
-    //     expiresIn: "24h", //token will expire in 24 hours 
+    //     expiresIn: "24h", //token will expire in 24 hours
     //   }
     // );
     // console.log("JWT token : ", token);
@@ -177,23 +176,23 @@ const loginUser = async (req, res) => {
     // create jwt refresh token and access token
     const accessToken = jwt.sign(
       //payload/id
-      {id: user._id, role: user.role},
+      { id: user._id, role: user.role },
       //token secrate
       process.env.JWTACCESS_SECRET,
-      //expiry 
-      { expiresIn: "24h" }, //token will expire in 24 hours
-    )
+      //expiry
+      { expiresIn: "24h" } //token will expire in 24 hours
+    );
 
     const refreshToken = jwt.sign(
       //payload/id
-      {id: user._id, role: user.role},
+      { id: user._id, role: user.role },
       //token secrate
       process.env.JWTREFRESH_SECRET,
-      //expiry 
-      { expiresIn: "24h" }, //token will expire in 24 hours
-    )
-user.refreshToken = refreshToken;
-await user.save();
+      //expiry
+      { expiresIn: "24h" } //token will expire in 24 hours
+    );
+    user.refreshToken = refreshToken;
+    await user.save();
     //set it to cookies
     const cookieOptions = {
       httpOnly: true, //prevent from XSS attacks
@@ -201,9 +200,20 @@ await user.save();
       expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // res.cookie() expects expires to be a Date object, not a number.
     };
     console.log("Cookie option returned value :", cookieOptions);
+
     // console.log("token code : ", token, "Cookie details :", cookieOptions); //this is for jwt token
-    console.log("token code : ", accessToken, "Cookie details :", cookieOptions);
-    console.log("token code : ", refreshToken, "Cookie details :", cookieOptions);
+    console.log(
+      "accessToken code : ",
+      accessToken,
+      "Cookie details :",
+      cookieOptions
+    );
+    console.log(
+      "refreshToken code : ",
+      refreshToken,
+      "Cookie details :",
+      cookieOptions
+    );
     // Set the cookie with the token
     // res.cookie("token", token, cookieOptions); //this is for jwt token
     res.cookie("accessToken", accessToken, cookieOptions);
@@ -232,12 +242,15 @@ await user.save();
 const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
+    console.log("User profile details : ", user);
+
     if (!user) {
       return res.status(400).json({
         msg: "User Not found!",
         success: false,
       });
     }
+
     res.status(200).json({
       msg: "User details",
       success: true,
@@ -253,14 +266,39 @@ const getMe = async (req, res) => {
 };
 
 const logoutUser = async (req, res) => {
+  const token = req.cookies.refreshToken;
+  if (!token) {
+    return res.status(400).json({
+      msg: "No token found!",
+      success: false,
+    });
+  }
+  
   try {
-    res.cookie("token", "", {
+    const refreshdecoded = jwt.verify(token, process.env.JWTREFRESH_SECRET);
+    console.log(refreshdecoded.id);
+    const user = await User.findOne({ _id: refreshdecoded.id });
+    console.log(user);
+    console.log("logouted user email id ", user.email);
+
+
+    if (!user) {
+      return res.status(401).json({
+        msg: "Unauthorized access!",
+        success: false,
+      });
+    }
+    //remove refresh token from user
+    // user.refreshToken = null; //user baar baar ye cheej karega isliye null kiya na ki undefined.
+    res.cookie("accessToken", "", {
       httpOnly: true,
       secure: true,
-      expires: new Date(Date.now()),
-      // sameSite: "strict",
-    }); //{}- in this bracket you can send cookie options
-    console.log("cookie cleared");
+    });
+
+    res.cookie("refreshToken", "", {
+      httpOnly: true,
+      secure: true,
+    });
 
     res.status(200).json({
       success: true,
