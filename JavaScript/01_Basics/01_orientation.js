@@ -43,3 +43,11 @@ printCoffee(10);
 addTwo(10, 20);
 mutliplyTwo(10*20);
 console.log(mutliplyTwo(10, 40));
+
+
+
+let a = 10;
+a = 20; //let variable value can be redefined 
+const b = 34;
+// b = 45; //but const variable can not be redefined
+console.log(a,b)
