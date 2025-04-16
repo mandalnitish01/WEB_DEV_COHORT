@@ -16,7 +16,14 @@
 // console.log(true + undefined) //NaN
 // console.log(true + Infinity) //Infinity
 // console.log(true + NaN) //NaN
-
+console.log("A" - 1) //NaN
+console.log("tilak" + "100") //tilak100
+console.log("2" + 2 + "2")
+let num = "2" + 2;
+console.log(typeof(num))
+let num2 = num - "2"
+console.log(typeof(num2))
+console.log("2" + 2 - "2") //becaues of - it converted into number.
 
 //Temporal dead zone:-
 // {
@@ -85,5 +92,7 @@
 // console.log(b);
 
 // }
+
+
 
 
