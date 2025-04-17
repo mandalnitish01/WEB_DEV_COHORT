@@ -253,7 +253,21 @@
 // //         city:"gurugram"
 // //         },
 // //   }); // "Unknown city"
+
+// example of optional chaining
+let obj = {
+name : "jay singh",
+address: {
+    lat:"23.3435",
+    lon:"45.3543",
+    state:"goa"
+}
+}
+console.log(obj?.name);
+console.log(obj?.address?.lat);
+
 // }
+
 
 // // turnary operator
 // {
@@ -275,7 +289,7 @@ function add(a,b,callback){
 }
 
 function showresult(result){
-    console.log(result)
+    // console.log(result)
 }
 
 add(2,4,showresult)

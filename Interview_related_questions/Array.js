@@ -33,3 +33,18 @@ const isIncreasing = numbers
     return num > arr[idx - 1];
   });
 console.log(isIncreasing); // true
+
+
+// filter example 
+let filterarray = [1,2,3,4,5,6,7]
+let filtered_array = filterarray.filter((num)=>{
+return num > 4;
+})
+let filtered_Array_1 = filterarray.filter(num => num = 2);
+
+let filtered_Array_2 = filterarray.reduce(num => num = 4);
+
+console.log(filterarray) //it print originakl arraye
+console.log(filtered_array) //it return condition based new array
+console.log(filtered_Array_1) //it return original array
+console.log(filtered_Array_2) //it return num = whaterver the value is.
