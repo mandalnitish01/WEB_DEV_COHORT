@@ -109,6 +109,7 @@ const verifyUser = async (req, res) => {
         message: "Invalid token",
       });
     }
+
     user.isVerified = true;
     user.verificationToken = undefined;
     await user.save();
