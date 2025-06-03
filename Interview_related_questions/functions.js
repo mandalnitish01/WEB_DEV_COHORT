@@ -22,8 +22,9 @@
 // 19. What is the difference between a promise and an observable?
 
 
+
 // 1. What is a function?
-{
+// {
 // -> A function is a blocl of code that performs a specific task. 
 // It can take input parameters, perform operations, and return a value.
 //  Functions are used to organize code, promote reusability, and improve readability.
@@ -57,6 +58,7 @@
 
 // one way 
 // function testArray(...args){ //... is a spread operator
+//     // console.log(args)
 //   let sum = 0;
 //  args.forEach((number)=>{
 //     sum += number;
@@ -73,9 +75,9 @@
 //   return sum;
 // }
  
-// let sum = testArray(1,2,3,4,5,6,7,8,9);
+// let sum = testArray(1,2,3,4,5,6,7,8,9,8);
 // console.log(`the sum is ${sum}`); // template literals
-}
+// }
 
 
 
@@ -110,41 +112,44 @@
 
 //Topics covered :-
                     //pure and impure functions
-                    //function currying
+                    //function currying 
+                    //infinite curring
                     // template literals 
                     // optional chaining (?.)
                     // turnary operator
                     // higher order function
 
 
-// pure and impure functions
-// {
+// pure and impure functions [https://rahuljain-dev.medium.com/understanding-pure-and-impure-functions-in-javascript-a-key-to-efficient-code-96859f379f6e]
 
-// // // Pure function - calculate the area of a circle
-// // function calcCircleArea(radius) {
-// //     return (Math.PI * radius * radius).toFixed(2);
-// //   }
+
+// Pure function - A pure function is a fundamental concept in functional programming, wherein a function produces predictable output solely based on its input parameters. In other words, for the same set of input arguments, a pure function will always yield the same output without causing any side effects.
+function calcCircleArea(radius) {
+    return (Math.PI * radius * radius).toFixed(2);
+  }
   
-// //   // Perform follow to execute the function
-// //   const radius = 5;
-// //   const area = calcCircleArea(radius);
-// // //   console.log(`Circle area of radius ${radius} is ${area}`);
+  // Perform follow to execute the function
+  const radius = 5;
+  const area = calcCircleArea(radius);
+  console.log(`Circle area of radius ${radius} is ${area}`);
 
 
-// // // Impure function - increment the global counter
-// //  // Global variable
-// //  let counter = 0;
+// Impure function -  Impure functions modify state outside their scope or have an impact on the external environment.
+ // Global variable
+ let counter = 0;
 
-// // function incrCounter() {
-// //   counter++;
-// // }
+function incrCounter() {
+  counter++;
+}
 
-// // // Usage
-// // incrCounter();
-// // // console.log(`Counter value: ${counter}`); // Output: "Counter value: 1"
-// // incrCounter();
-// // // console.log(`Counter value: ${counter}`); // Output: "Counter value: 2"
-// }
+// Usage
+incrCounter();
+console.log(`Counter value: ${counter}`); // Output: "Counter value: 1"
+incrCounter();
+incrCounter();
+incrCounter();
+console.log(`Counter value: ${counter}`); // Output: "Counter value: 2"
+
 
 // //function currying
 // {
@@ -191,6 +196,20 @@
 // // // // final output is : this is second
 
 // }
+
+
+// Infinite Currying in JavaScript
+
+
+// function sum(a) {
+//     return function(b){
+//       if(!b){
+//           return a;
+//       }
+//       return sum(a+b);
+//     }
+//   }
+//   console.log(sum(1)(2)(3)(4)(5)(6)(7)());  //21
 
 // // template literals 
 // {
@@ -263,8 +282,8 @@ address: {
     state:"goa"
 }
 }
-console.log(obj?.name);
-console.log(obj?.address?.lat);
+// console.log(obj?.name);
+// console.log(obj?.address?.lat);
 
 // }
 
