@@ -172,6 +172,8 @@ const loginUser = async (req, res) => {
     //   }
     // );
     // console.log("JWT token : ", token);
+// there is something before the code 
+
 
     // create jwt refresh token and access token
     const accessToken = jwt.sign(
