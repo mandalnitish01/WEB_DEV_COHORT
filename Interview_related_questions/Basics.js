@@ -155,4 +155,36 @@
 
 
 
+//check two array elements are equal or not
+// let arr1 = [100, 200, 300, 400];
+// let arr2 = [100, 200, 300, 400];
+// arr1.toString() === arr2.toString() ? console.log("All elements are equal") : console.log("Not Equal");arr1 = [100, 200, 300, 400];
+// let 
+
+
+// console.log(null == undefined); // true
+// console.log(typeof null); // object
+// console.log(typeof undefined); // undefined
+// console.log(typeof Number); // function
+// console.log(null == Number); // false
+
+
+
+//concate two array each element in alternate way and the element should be in string format
+// let arr1= "Nitish";
+let arr1= [1,3,5,7,9];
+// let arr2 = "Mandal";
+let arr2 = [2,4,6,8,10];
+let arr3 = [];
+let maxLength = Math.max(arr1.length, arr2.length);
+for (let i = 0; i < maxLength; i++) {
+    if (i < arr1.length) {
+        arr3.push(arr1[i]);
+    }
+    if (i < arr2.length) {
+        arr3.push(arr2[i]);
+    }
+}
+arr3 = arr3.map(String); //i convert each element of arr3 into string format and if i not do this then it will return number format
+console.log(arr3);  // Output: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 
