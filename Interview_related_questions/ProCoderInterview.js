@@ -1,5 +1,6 @@
 console.log("Welcome to ProCoder Interview Questions");
 
+//reject and resolve promise when button's are getting clicked
 // const mypromise = new Promise((resolve, reject) => {
 //     document.getElementById("mybtn1").addEventListener("click", ()=>{
 //         resolve("Promise resolved");
@@ -7,7 +8,7 @@ console.log("Welcome to ProCoder Interview Questions");
 //     document.getElementById("mybtn2").addEventListener("click", ()=>{
 //         reject("Promise rejected");
 //     });
-// }); 
+// });
 // mypromise
 //     .then((message) => {
 //         console.log(message);
@@ -27,22 +28,60 @@ console.log("Welcome to ProCoder Interview Questions");
 // const myPromise =  fetchData();
 // console.log(myPromise);
 
-
-
 //Check the vowels
-let str = "NITISH kumar mandal";
-let vowels = "aeiouAEIOU";
+// let str = "NITISH kumar mandal";
+// let vowels = "aeiouAEIOU";
 
-function checkVowels(str) {
-    const resultArray = [];
-    for(let i=0; i < str.length; i++) {
-        if (vowels.includes(str[i])) {
-            resultArray.push(str[i]);
-        }
-    }
-    return  resultArray;
-}
-let result = checkVowels(str);
-// console.log(`The number of vowels in "${str}" is: ${vowelCount}`);
-console.log(`The vowels in "${str}" are: ${result.join(", ")}`);
-console.log("Total number of vowels: " + result.length);
+// function checkVowels(str) {
+//     const resultArray = [];
+//     for(let i=0; i < str.length; i++) {
+//         if (vowels.includes(str[i])) {
+//             resultArray.push(str[i]);
+//         }
+//     }
+//     return  resultArray;
+// }
+// let result = checkVowels(str);
+// // console.log(`The number of vowels in "${str}" is: ${vowelCount}`);
+// console.log(`The vowels in "${str}" are: ${result.join(", ")}`);
+// console.log("Total number of vowels: " + result.length);
+
+//check the first repeated character in the string
+
+//using simple code base
+// const str = "Nitsish";
+
+// for (let i = 0; i < str.length; i++) {
+//   for (let j = i + 1; j < str.length; j++) {
+//     if (str[i] == str[j]) {
+//       console.log("First repeated character:", str[i]);
+//       i = str.length;
+//       break;
+//     }
+//   }
+// }
+
+//using function
+
+// function readFirstChar(str) {
+//   for (let i = 0; i < str.length; i++) {
+//     for (let j = i + 1; j < str.length; j++) {
+//       if (str[i] == str[j]) {
+//         return str[i];
+//       }
+//     }
+//   }
+//   return null;
+// }
+
+// console.log(readFirstChar("Sohano"));
+
+
+// separate numbers and characters from an array 
+
+// const arr=[1,2,"a","b",20,"n"];
+// const number = arr.filter((item)=> typeof item === 'number');
+// const letter = arr.filter((item)=> typeof item === 'string' && isNaN(item));
+
+// console.log("Number: ",number)
+// console.log("Letter: ",letter)
