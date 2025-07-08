@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo list</title>
+  </head>
+  <body style="background-color: black; color: white">
+    <div>
+      <h1>Todo List</h1>
+      <div>
+        <div>
+          <label for="start">Start date:</label>
+          <input type="date" id="start" name="trip-start" value="2018-07-22" />
+          priority
+          <select id="priority">
+            <option value="">select Priority</option>
+            <option id="highpriorityTask" value="high">High 🔴</option>
+            <option id="mediumpriorityTask" value="medium">Medium 🟠</option>
+            <option id="lowpriorityTask" value="low">Low 🟢</option>
+          </select>
+        </div>
+        <input type="text" placeholder="enter your task..." id="inputbox" />
+        <button id="addBtn">Add</button>
+      </div>
+      <div id="TaskList">
+        <li>
+          Go to gym
+          <button>Edit</button>
+          <button>Del</button>
+        </li>
+        <li>
+          Eat food
+          <button>Edit</button>
+          <button>Del</button>
+        </li>
+      </div>
+    </div>
+    <script src="Script.js"></script>
+  </body>
+</html>
