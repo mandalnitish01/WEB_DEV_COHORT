@@ -26,6 +26,7 @@ function printChai(n){
     console.log("Hello,", n, "Chai");
 }
 
+//string litterals
 function printCoffee(n){
     console.log(`Hello ${n} Coffee`);
 }

@@ -188,3 +188,14 @@ for (let i = 0; i < maxLength; i++) {
 arr3 = arr3.map(String); //i convert each element of arr3 into string format and if i not do this then it will return number format
 console.log(arr3);  // Output: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 
+
+
+//question based on nullish collision operator (??) :- nullish operator run when only execute when input value is undefined or null.
+function showBalance(balance){
+    // let output = balance || "INvalid Balance";
+    let output = balance ?? "Invalid Balance"; //in this case it return proper balance whether it is in negative
+    console.log("Balance : ", output)
+}
+showBalance(3000)
+showBalance(null) //0 is a falsi value that is why it get concole Invalid Balance but in real world 0 is a real balance.we use short-cericut concept that is why 0 represent falsi value.
+showBalance(321)
