@@ -17,15 +17,15 @@ const add = (...args) => {
 console.log(add(2, 3, 4)); //5
 
 //Hoisting
-// hyythere(); //hyy there
-// //in normal function hoisting is avaliable 
-// //hoisting is a js feature where we can call the function before it is declared.
-// function hyythere() {
-//   console.log("hyy there");
-// }
+hyythere(); //hyy there
+//in normal function hoisting is avaliable 
+//hoisting is a js feature where we can call the function before it is declared.
+function hyythere() {
+  console.log("hyy there");
+}
 
 
-// firstfun();  
+firstfun();  
 // in arrow function hoisting is not avaliable.
 // hoisting is a js feature where we can call the function before it is declared.
 // but in arrow function case it return ReferenceError.

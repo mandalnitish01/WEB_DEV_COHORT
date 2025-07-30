@@ -3,7 +3,6 @@
 // #Array constructor :- The Array constructor creates Array objects.
 // #Array methods :- The Array object has many built-in methods.
 // #Array properties :- The Array object has many built-in properties.
-
 // #Array length :- The length property of an array returns the number of elements in that array.
 // #Array index :- The index of an array is the position of an element in that array.
 // #Array elements :- The elements of an array are the values stored in that array.
@@ -16,6 +15,7 @@
 // console.log(Array.isArray(fruits)); // true
 // console.log(Array.isArray("Apple")); // false
 // console.log(Array.isArray({})); // false
+
 
 // 2. Array.from() :- The Array.from() method creates a new array from an array-like or iterable object.
 // example
@@ -35,6 +35,7 @@
 // const str5 = Array.from("hello", (val) => val.toLowerCase());
 // console.log(str5); // ["h", "e", "l", "l", "o"]
 
+
 //3. ###  array.find() :- The find() method returns the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
 // example
 // const heros = [
@@ -47,12 +48,12 @@
 // })
 // console.log(genious); // { name: "superman", age: 40 , IQ: 300}
 
-//4. ### map :- The map() method creates a NEW ARRAY populated with the results of calling a provided function on every element in the calling array.
-// example
-// const numbers = [1, 2, 3, 4, 5];
-// const squares = numbers.map((num) => num * num);
-// console.log(squares); // [1, 4, 9, 16, 25]
 
+
+
+
+//4. ### map :- The map() method creates a NEW ARRAY populated with the results of calling a provided function on every element in the chero.IQ > 150;
+// })
 //5.  ### filter :- The filter() method creates a NEW ARRAY with all elements that pass the test implemented by the provided function.
 // example
 // const numbers = [1, 2, 3, 4, 5];
@@ -119,12 +120,12 @@
 //8. ### forEach() :- execute a function for each element in the array
 // The forEach() method of Array instances executes a provided function once for each array element.
 // example
-const array = [1, 2, 3, 4, 6];
-const newarray = [];
-array.forEach((item) => {
-    newarray.push(item);
-  });
-console.log("pushing array element into newarray",newarray)
+// const array = [1, 2, 3, 4, 6];
+// const newarray = [];
+// array.forEach((item) => {
+//     newarray.push(item);
+//   });
+// console.log("pushing array element into newarray",newarray)
 
 //9. ### includes() :-
 
