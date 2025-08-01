@@ -1,32 +1,31 @@
 console.log("Welcome to ProCoder Interview Questions");
-
 //reject and resolve promise when button's are getting clicked
-// const mypromise = new Promise((resolve, reject) => {
-//     document.getElementById("mybtn1").addEventListener("click", ()=>{
-//         resolve("Promise resolved");
-//     });
-//     document.getElementById("mybtn2").addEventListener("click", ()=>{
-//         reject("Promise rejected");
-//     });
-// });
-// mypromise
-//     .then((message) => {
-//         console.log(message);
-//     })
-//     .catch((error) => {
-//         console.error(error);
-//     });
+const mypromise = new Promise((resolve, reject) => {
+    document.getElementById("mybtn1").addEventListener("click", ()=>{
+        resolve("Promise resolved");
+    });
+    document.getElementById("mybtn2").addEventListener("click", ()=>{
+        reject("Promise rejected");
+    });
+});
+mypromise
+    .then((message) => {
+        console.log(message);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
 
-// async function fetchData(){
-//     return new Promise(resolve => {
-//         setTimeout(() => {
-//             // const data = { id: 1, name: "John Doe" };
-//             resolve("data");
-//         }, 1000); // Simulating a 2-second delay
-//     });
-// }
-// const myPromise =  fetchData();
-// console.log(myPromise);
+async function fetchData(){
+    return new Promise(resolve => {
+        setTimeout(() =>  {
+            const data =  { id: 1, name: "John Doe" };
+            resolve(data);
+        }, 1000); // Simulating a 2-second delay
+    });
+}
+const myPromise =  fetchData();
+console.log(myPromise);
 
 //Check the vowels
 // let str = "NITISH kumar mandal";
