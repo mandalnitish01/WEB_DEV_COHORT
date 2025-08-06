@@ -67,9 +67,9 @@
 // // 2. let and const are block scoped.
 
 // // 3. var can be redeclared and updated.
-// // 4. let and const can be updated but not redeclared.
-
+// // 4. let can be updated but not redeclared.
 // // 5. const cannot be updated or redeclared.
+
 // // 6. let and const are hoisted but not initialized.
 // // 7. var is hoisted and initialized with undefined.
 // // 8. let and const are not hoisted.
