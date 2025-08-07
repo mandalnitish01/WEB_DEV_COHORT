@@ -94,14 +94,23 @@
 // :- reverse of sentence in word and also reverse the letters of each word
 
 // console.log("Try programiz.pro");
-// let num = "i am Nitish kumar";
-// // const result = num.split("").reverse().join(""); //reverse the simple string or number
+// let num = "i am Nitish Mandal";
+// const result = num.split("").reverse().join(""); 
+
+// //reverse the sentence as well as words of strings.
+
+// console.log(result)
 
 // // now i write the code for reverse the sentence of word like "i am Nitish mandal" to "mandal Nitish am I";
-// // const result = num.split(" ").reverse().join(" "); //giving space in split function to ensure that convert it into word reverse.
+
+// const result = num.split(" ").reverse().join(" ");
+
+//  //giving space in split function to ensure that convert it into word reverse. And bina space ke letter reverse karenge
 // // join function me bracket nhi karenge to comma se separate ho jayega.
-// const result = num.split(" ").reverse();
-// // console.log(result); // ["mandal", "Nitish", "am", "I"]
+
+// const result = num.split(" ").reverse().join(" ");
+// console.log(result); // ["mandal", "Nitish", "am", "I"]
+
 
 // const reversedArray = [];
 // result.forEach((element)=>{
@@ -111,8 +120,12 @@
 // console.log(result) //reverse the words in array
 // console.log(reversedArray) //reverse the words in array and also reverse the letters of each word
 
+
+
 //pallindrom number check
 // let num = 121;
+
+// // console.log(typeof(num.toString())); 
 // let reverse = num.toString().split("").reverse().join("");
 // if(num == reverse){
 //     console.log("Pallindrom number");
@@ -158,9 +171,7 @@
 //check two array elements are equal or not
 // let arr1 = [100, 200, 300, 400];
 // let arr2 = [100, 200, 300, 400];
-// arr1.toString() === arr2.toString() ? console.log("All elements are equal") : console.log("Not Equal");arr1 = [100, 200, 300, 400];
-// let 
-
+// arr1.toString() === arr2.toString() ? console.log("All elements are equal") : console.log("Not Equal");
 
 // console.log(null == undefined); // true
 // console.log(typeof null); // object
@@ -169,30 +180,29 @@
 // console.log(null == Number); // false
 
 
-
 //concate two array each element in alternate way and the element should be in string format
 // let arr1= "Nitish";
-let arr1= [1,3,5,7,9];
-// let arr2 = "Mandal";
-let arr2 = [2,4,6,8,10];
-let arr3 = [];
-let maxLength = Math.max(arr1.length, arr2.length);
-for (let i = 0; i < maxLength; i++) {
-    if (i < arr1.length) {
-        arr3.push(arr1[i]);
-    }
-    if (i < arr2.length) {
-        arr3.push(arr2[i]);
-    }
-}
-arr3 = arr3.map(String); //i convert each element of arr3 into string format and if i not do this then it will return number format
-console.log(arr3);  // Output: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+// let arr1= [1,3,5,7,9];
+// // let arr2 = "Mandal";
+// let arr2 = [2,4,6,8,10];
+// let arr3 = [];
+// let maxLength = Math.max(arr1.length, arr2.length);
+// for (let i = 0; i < maxLength; i++) {
+//     if (i < arr1.length) {
+//         arr3.push(arr1[i]);
+//     }
+//     if (i < arr2.length) {
+//         arr3.push(arr2[i]);
+//     }
+// }
+// arr3 = arr3.map(String); //i convert each element of arr3 into string format and if i not do this then it will return number format
+// console.log(arr3);  // Output: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 
 
 
 //question based on nullish collision operator (??) :- nullish operator run when only execute when input value is undefined or null.
 function showBalance(balance){
-    // let output = balance || "INvalid Balance";
+    // let output = balance || "Invalid Balance";
     let output = balance ?? "Invalid Balance"; //in this case it return proper balance whether it is in negative
     console.log("Balance : ", output)
 }
