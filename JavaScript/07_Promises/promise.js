@@ -115,6 +115,8 @@
 // }
 // getAllUsers()
 
+
+//example using fetch and .then .catch .finally
 fetch('https://jsonplaceholder.typicode.com/users')
 .then((response)=>{
     return response.json();
@@ -145,4 +147,7 @@ mypromise
 })
 .catch((error) => {
     console.error(error);
-});
+})
+.finally(()=>{
+    console.log("Promise execution completed");
+})
