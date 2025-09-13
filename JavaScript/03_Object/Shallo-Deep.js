@@ -12,16 +12,17 @@ let arr = [1,2,[3,4,5],6];
 
 //shallow copy
 // let copyarray = [...arr]; // means it can copy the value only at 1 level of the array not on the nexted array;
-// copyarray.push(7))
-// copyarray[2].push(7) //it will change both the array 
-// console.log(arr);
-// console.log(copyarray)
+// copyarray.push(7)
+// copyarray.push(10)
+// copyarray[2].push(10) //it will change both the array 
+// console.log("original array",arr);
+// console.log("shallow copy",copyarray)
 
 
  //Deep copy
 let copyarray = JSON.parse(JSON.stringify(arr)); //it will not affect the original array whether i want to update an array as well as nested array;
 copyarray[2].push(7)
 copyarray.push(8)
-console.log(arr);
-console.log(copyarray)
+console.log("original array",arr);
+console.log("deep copy",copyarray);
 
